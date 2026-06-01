@@ -573,6 +573,57 @@
         .timeline-placeholder .bar:nth-child(2) { width: 83%; }
         .timeline-placeholder .bar:nth-child(3) { width: 66%; }
 
+        /* School subcards inside main timeline card */
+        .school-subcards {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+            text-align: left;
+        }
+        @media (max-width: 640px) {
+            .school-subcards {
+                flex-direction: column;
+            }
+        }
+        .school-subcard {
+            flex: 1;
+            background: var(--surface-container-low);
+            box-shadow: var(--neu-sun);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            border: 1px solid rgba(67,72,71,0.08);
+            transition: all 0.25s ease;
+        }
+        .school-subcard:hover {
+            border-color: rgba(182,201,219,0.15);
+            transform: translateY(-2px);
+        }
+        .school-subcard h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .school-subcard .subcard-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--secondary);
+        }
+        .school-subcard .subcard-result {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--on-surface-variant);
+        }
+        @media (min-width: 768px) {
+            .timeline-item:nth-child(odd) .school-subcards {
+                justify-content: flex-end;
+            }
+        }
+
+
         /* =============================================
            SKILLS SECTION
            ============================================= */
@@ -1442,35 +1493,28 @@
         <div class="timeline-wrapper">
             <div class="timeline-line"></div>
             <div class="timeline-items">
-                <!-- 1 - Class X -->
+                <!-- 1 - Schooling -->
                 <div class="timeline-item">
                     <div class="timeline-dot inactive"></div>
                     <div class="timeline-card">
-                        <h3 class="font-headline-lg-mobile">Class X (High School)</h3>
-                        <p class="font-body-sm meta">Greenway Modern School, Roorkee • CBSE • 2020</p>
-                        <p class="font-body-sm" style="color:var(--on-surface-variant); margin-bottom:12px;">Percentage: 93.40%</p>
-                        <div class="timeline-placeholder">
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                            <div class="bar"></div>
+                        <h3 class="font-headline-lg-mobile">Schooling</h3>
+                        <p class="font-body-sm meta">Greenway Modern School, Roorkee • CBSE</p>
+                        <!-- Subcards inside main card -->
+                        <div class="school-subcards">
+                            <div class="school-subcard">
+                                <h4>Class X</h4>
+                                <div class="subcard-meta">CBSE • 2020</div>
+                                <div class="subcard-result">Result: 93.40%</div>
+                            </div>
+                            <div class="school-subcard">
+                                <h4>Class XII</h4>
+                                <div class="subcard-meta">CBSE • 2022</div>
+                                <div class="subcard-result">Result: 74.80%</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- 2 - Class XII -->
-                <div class="timeline-item">
-                    <div class="timeline-dot inactive"></div>
-                    <div class="timeline-card">
-                        <h3 class="font-headline-lg-mobile">Class XII (Intermediate)</h3>
-                        <p class="font-body-sm meta">Greenway Modern School, Roorkee • CBSE • 2022</p>
-                        <p class="font-body-sm" style="color:var(--on-surface-variant); margin-bottom:12px;">Percentage: 74.80%</p>
-                        <div class="timeline-placeholder">
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 3 - B.Tech -->
+                <!-- 2 - B.Tech -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
@@ -1486,6 +1530,7 @@
                 </div>
             </div>
         </div>
+
 
 
     </section>
