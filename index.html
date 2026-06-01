@@ -1617,34 +1617,10 @@
             <!-- Core Technologies -->
             <div class="skills-card">
                 <h3 class="font-headline-lg-mobile">Core Technologies</h3>
-                <div class="skill-bar-group">
-                    <div>
-                        <div class="skill-bar-label">
-                            <span>Python &amp; Django</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-track">
-                            <div class="skill-fill" data-width="90"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="skill-bar-label">
-                            <span>SQL &amp; REST APIs</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-track">
-                            <div class="skill-fill" data-width="85"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="skill-bar-label">
-                            <span>Machine Learning &amp; NLP</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-track">
-                            <div class="skill-fill" data-width="80"></div>
-                        </div>
-                    </div>
+                <div class="pills-wrap">
+                    <span class="pill">Python &amp; Django</span>
+                    <span class="pill">SQL &amp; REST APIs</span>
+                    <span class="pill">Machine Learning &amp; NLP</span>
                 </div>
             </div>
             <!-- Tools & Libraries -->
@@ -2042,21 +2018,7 @@
 
     animElements.forEach(function(el) { animObserver.observe(el); });
 
-    // ----------------------------
-    // 5. Skill Bar Animation
-    // ----------------------------
-    var skillFills = document.querySelectorAll('.skill-fill');
-    var skillObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                var width = entry.target.getAttribute('data-width');
-                entry.target.style.width = width + '%';
-                skillObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
 
-    skillFills.forEach(function(fill) { skillObserver.observe(fill); });
 
     // ----------------------------
     // 6. Project Carousel
