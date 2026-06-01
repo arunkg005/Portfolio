@@ -272,6 +272,67 @@
             border-radius: var(--radius-sm);
         }
 
+        /* Resume Buttons */
+        .btn-resume-nav {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            background: var(--surface-container-highest);
+            color: var(--primary);
+            box-shadow: var(--neu-ext);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            transition: all 0.25s ease;
+        }
+        .btn-resume-nav:hover {
+            background: var(--surface-bright);
+            box-shadow: var(--neu-ext-hover);
+            transform: translateY(-2px);
+        }
+        .btn-resume-nav:active {
+            box-shadow: var(--neu-sun);
+            transform: translateY(1px);
+        }
+        .btn-resume-nav span {
+            font-size: 18px;
+        }
+        @media (min-width: 768px) {
+            .btn-resume-nav {
+                display: inline-flex;
+            }
+        }
+
+        .btn-resume-mobile {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px;
+            border-radius: var(--radius-full);
+            background: var(--surface-container-high);
+            color: var(--primary);
+            box-shadow: var(--neu-ext);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            transition: all 0.25s ease;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+        .btn-resume-mobile:hover {
+            background: var(--surface-bright);
+        }
+        .btn-resume-mobile:active {
+            box-shadow: var(--neu-sun);
+        }
+
         /* =============================================
            MAIN CONTENT
            ============================================= */
@@ -1012,6 +1073,36 @@
             transform: scale(1.1);
         }
 
+        .btn-cert-view {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: var(--radius-full);
+            background: var(--surface-container-highest);
+            color: var(--primary);
+            box-shadow: var(--neu-ext);
+            border: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            margin-top: 24px;
+            text-decoration: none;
+        }
+        .btn-cert-view:hover {
+            background: var(--surface-bright);
+            box-shadow: var(--neu-ext-hover);
+            transform: translateY(-2px);
+        }
+        .btn-cert-view:active {
+            box-shadow: var(--neu-sun);
+            transform: translateY(1px);
+        }
+
         /* =============================================
            CONTACT SECTION
            ============================================= */
@@ -1196,11 +1287,17 @@
             <a class="nav-link active" href="#hero">Home</a>
             <a class="nav-link" href="#projects">Projects</a>
             <a class="nav-link" href="#certificates">Certifications</a>
-            <a class="nav-link" href="#experience">Resume</a>
+            <a class="nav-link" href="#experience">Experience</a>
+            <a class="nav-link" href="#contact">Contact</a>
         </div>
 
         <!-- Actions -->
         <div class="nav-actions">
+            <!-- Resume Download Button (Desktop) -->
+            <a class="btn-resume-nav" href="assets/Arun_Kumar_Gupta_Resume.pdf" target="_blank" download>
+                <span class="material-symbols-outlined">download</span>
+                <span>Resume</span>
+            </a>
             <!-- Hamburger (mobile) -->
             <button class="nav-hamburger" id="hamburger-btn" aria-label="Menu">
                 <span class="material-symbols-outlined" style="font-size:24px;">menu</span>
@@ -1212,8 +1309,12 @@
         <a class="nav-link active" href="#hero">Home</a>
         <a class="nav-link" href="#projects">Projects</a>
         <a class="nav-link" href="#certificates">Certifications</a>
-        <a class="nav-link" href="#experience">Resume</a>
+        <a class="nav-link" href="#experience">Experience</a>
         <a class="nav-link" href="#contact">Contact</a>
+        <a class="btn-resume-mobile" href="assets/Arun_Kumar_Gupta_Resume.pdf" target="_blank" download>
+            <span class="material-symbols-outlined">download</span>
+            <span>Download Resume</span>
+        </a>
     </div>
 </nav>
 
@@ -1500,7 +1601,7 @@
                 </div>
                 <h4>ServiceNow CSA</h4>
                 <p class="cert-issuer">ServiceNow</p>
-                <span class="cert-status in-progress">In Progress</span>
+                <span class="cert-status earned">Earned</span>
                 <span class="cert-click-hint">Click to view</span>
             </div>
             <div class="cert-card" data-cert="salesforce">
@@ -1538,6 +1639,11 @@
             <span class="cert-modal-date" id="cert-modal-date"></span>
             <p class="cert-modal-desc" id="cert-modal-desc"></p>
             <span class="cert-modal-status" id="cert-modal-status"></span>
+            <!-- View PDF Link -->
+            <a class="btn-cert-view" id="cert-modal-link" href="#" target="_blank">
+                <span class="material-symbols-outlined">visibility</span>
+                <span>View Certificate</span>
+            </a>
         </div>
     </div>
 
@@ -1778,21 +1884,23 @@
     var certData = {
         cad: {
             title: 'ServiceNow CAD',
-            issuer: 'Certified Application Developer',
+            issuer: 'ServiceNow',
             date: 'Dec 2025 - Present',
             icon: 'workspace_premium',
             status: 'in-progress',
             statusLabel: 'In Progress',
-            desc: 'CAD certification focused on developing custom applications, workflows, and solutions on the ServiceNow platform using low-code and scripting concepts.'
+            desc: 'CAD certification focused on developing custom applications, workflows, and solutions on the ServiceNow platform using low-code and scripting concepts.',
+            file: null
         },
         csa: {
-            title: 'ServiceNow CSA',
-            issuer: 'Certified System Administrator',
-            date: 'Dec 2025 - Present',
+            title: 'ServiceNow Certified System Administrator',
+            issuer: 'ServiceNow',
+            date: 'Issued: May 30, 2026',
             icon: 'workspace_premium',
-            status: 'in-progress',
-            statusLabel: 'In Progress',
-            desc: 'CSA certification that validates knowledge of system administration, user management, configuration, and core functionalities of the ServiceNow platform.'
+            status: 'earned',
+            statusLabel: 'Earned',
+            desc: 'CSA certification that validates knowledge of system administration, user management, configuration, and core functionalities of the ServiceNow platform.',
+            file: 'assets/ServiceNow_CSA_Certificate.pdf'
         },
         salesforce: {
             title: 'Salesforce Trailhead Champion',
@@ -1801,16 +1909,18 @@
             icon: 'military_tech',
             status: 'earned',
             statusLabel: 'Earned',
-            desc: 'Salesforce Trailhead Champion and Innovator Badge recognizing skills in the Salesforce ecosystem and community leadership.'
+            desc: 'Salesforce Trailhead Champion and Innovator Badge recognizing skills in the Salesforce ecosystem and community leadership.',
+            file: null
         },
         agile: {
             title: 'Agile Scrum in Practice',
             issuer: 'Infosys Springboard',
-            date: 'Completed',
+            date: 'Issued: May 7, 2025',
             icon: 'school',
             status: 'earned',
             statusLabel: 'Earned',
-            desc: 'Professional certification in Agile Scrum methodologies covering sprint planning, backlog management, and iterative software delivery.'
+            desc: 'Professional certification in Agile Scrum methodologies covering sprint planning, backlog management, and iterative software delivery.',
+            file: 'assets/Infosys_Agile_Scrum_Certificate.pdf'
         }
     };
 
@@ -1821,6 +1931,7 @@
     var certDesc = document.getElementById('cert-modal-desc');
     var certStatus = document.getElementById('cert-modal-status');
     var certIcon = document.getElementById('cert-modal-icon');
+    var certLink = document.getElementById('cert-modal-link');
     var certClose = document.getElementById('cert-modal-close');
 
     document.querySelectorAll('.cert-card[data-cert]').forEach(function(card) {
@@ -1835,6 +1946,15 @@
                 certIcon.textContent = data.icon;
                 certStatus.textContent = data.statusLabel;
                 certStatus.className = 'cert-modal-status ' + data.status;
+                
+                // Show/hide PDF button
+                if (data.file) {
+                    certLink.href = data.file;
+                    certLink.style.display = 'inline-flex';
+                } else {
+                    certLink.style.display = 'none';
+                }
+                
                 certOverlay.classList.add('open');
             }
         });
