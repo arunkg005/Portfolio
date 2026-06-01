@@ -443,21 +443,80 @@
             border-radius: var(--radius-full);
             filter: blur(80px);
         }
-        .hero-hexagon {
+        .portal-hexagon {
             position: relative;
-            width: 320px; height: 360px;
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            background: var(--surface-container-highest);
-            padding: 8px;
-            box-shadow: var(--neu-ext);
+            width: 320px;
+            height: 360px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.6));
         }
         @media (min-width: 768px) {
-            .hero-hexagon { width: 400px; height: 450px; }
+            .portal-hexagon {
+                width: 400px;
+                height: 450px;
+            }
         }
-        .hero-hexagon img {
-            width: 100%; height: 100%;
-            object-fit: cover;
+        .portal-frame {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+        .portal-clipped {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            z-index: 1;
+            overflow: hidden;
+        }
+        .portal-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--surface-container-low);
+            background-image: repeating-linear-gradient(
+                0deg,
+                var(--background),
+                var(--background) 4px,
+                var(--surface-container-high) 4px,
+                var(--surface-container-high) 8px
+            );
+            opacity: 0.9;
+        }
+        .portal-img {
+            position: absolute;
+            bottom: -5%;
+            left: 50%;
+            transform: translateX(-50%) scale(1.1);
+            transform-origin: bottom center;
+            width: 105%;
+            height: 105%;
+            object-fit: contain;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .portal-unclipped {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+            z-index: 4;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .portal-hexagon:hover .portal-img {
+            transform: translateX(-50%) scale(1.18);
         }
         .floating-badge {
             position: absolute;
@@ -1470,16 +1529,30 @@
         <!-- Right (Image) -->
         <div class="hero-image-area">
             <div class="hero-glow"></div>
-            <div class="hero-hexagon">
-                <img alt="Portrait of Arun Kumar Gupta" src="assets/Arun_Kumar_Gupta.PNG"/>
+            <div class="portal-hexagon">
+                <!-- SVG Border -->
+                <svg class="portal-frame" viewBox="0 0 400 450">
+                    <polygon points="200,8 392,116.5 392,333.5 200,442 8,333.5 8,116.5" fill="none" stroke="#ffffff" stroke-width="12" stroke-linejoin="round" />
+                </svg>
+                
+                <!-- Clipped Background and Body Layer -->
+                <div class="portal-clipped">
+                    <div class="portal-bg-pattern"></div>
+                    <img class="portal-img" src="assets/Arun_Kumar_Gupta_transparent.png" alt="Portrait of Arun Kumar Gupta">
+                </div>
+                
+                <!-- Unclipped Head Layer (Only showing top part to overlap border) -->
+                <div class="portal-unclipped">
+                    <img class="portal-img" src="assets/Arun_Kumar_Gupta_transparent.png" alt="Portrait of Arun Kumar Gupta">
+                </div>
             </div>
             <div class="floating-badge badge-left">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">code</span>
-                <span>Web Dev</span>
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">model_training</span>
+                <span>DS / ML</span>
             </div>
             <div class="floating-badge badge-right">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">model_training</span>
-                <span>AI / ML</span>
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">code</span>
+                <span>SD</span>
             </div>
         </div>
     </section>
