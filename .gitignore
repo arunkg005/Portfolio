@@ -1,0 +1,14 @@
+# IDE and System Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+
+# Git / Gemini temp files
+.gemini/
+.tempmediaStorage/
+
+# Reference / template directories
+reference/
+stitch_dark_neumorphic_dev_portfolio/
