@@ -1297,6 +1297,60 @@
         }
 
         /* =============================================
+           CALL TO ACTION BANNER
+           ============================================= */
+        .cta-banner {
+            width: 100%;
+            background: linear-gradient(135deg, var(--surface-container-high), var(--surface-container-low));
+            padding: 80px 24px;
+            text-align: center;
+            box-shadow: inset 4px 4px 10px rgba(0,0,0,0.5), inset -4px -4px 10px rgba(74,92,106,0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 96px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+        .cta-banner h2 {
+            color: var(--primary);
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        .cta-banner p.cta-desc {
+            color: var(--on-surface-variant);
+            max-width: 600px;
+            font-size: 16px;
+            line-height: 24px;
+            margin-bottom: 8px;
+        }
+        .btn-cta {
+            background: var(--surface-container-highest);
+            color: var(--primary);
+            box-shadow: var(--neu-ext);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            padding: 16px 32px;
+            border-radius: var(--radius);
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .btn-cta:hover {
+            box-shadow: var(--neu-ext-hover);
+            transform: translateY(-2px);
+            color: var(--secondary);
+        }
+        .btn-cta:active {
+            box-shadow: var(--neu-sun-active);
+            transform: translateY(1px);
+        }
+
+        /* =============================================
            FOOTER
            ============================================= */
         footer {
@@ -1847,6 +1901,14 @@
     </section>
 
 </main>
+
+<!-- ========== CALL TO ACTION BANNER ========== -->
+<section class="cta-banner">
+    <p class="font-label-md" style="letter-spacing: 0.15em; color: var(--secondary); text-transform: uppercase;">Hire Me</p>
+    <h2 class="font-headline-lg">Let's Build Something Great Together</h2>
+    <p class="cta-desc">Currently open to software development roles, ML collaborations, and freelance projects.</p>
+    <button class="btn-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
+</section>
 
 <!-- ========== FOOTER ========== -->
 <footer>
