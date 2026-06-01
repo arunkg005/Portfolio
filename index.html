@@ -529,105 +529,42 @@
         @media (min-width: 768px) {
             .badge-left  { left: 20px; }
             .badge-right { right: 20px; }
-        }
-
-        /* =============================================
-           EDUCATION SECTION (Timeline)
+        }        /* =============================================
+           EDUCATION SECTION (Side-by-side Grid)
            ============================================= */
-        .timeline-wrapper {
-            position: relative;
-            padding-left: 32px;
+        .education-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
         }
         @media (min-width: 768px) {
-            .timeline-wrapper { padding-left: 0; }
+            .education-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
-        .timeline-line {
-            display: none;
-            position: absolute;
-            left: 50%;
-            top: 0; bottom: 0;
-            width: 4px;
-            background: var(--surface-container-highest);
-            transform: translateX(-50%);
-            border-radius: var(--radius-full);
-            box-shadow: var(--neu-sun);
-        }
-        @media (min-width: 768px) {
-            .timeline-line { display: block; }
-        }
-        .timeline-items {
-            display: flex;
-            flex-direction: column;
-            gap: 48px;
-        }
-        .timeline-item {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-        @media (min-width: 768px) {
-            .timeline-item { flex-direction: row; justify-content: space-between; }
-        }
-        .timeline-dot {
-            display: none;
-            position: absolute;
-            left: 50%; top: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px; height: 20px;
-            border-radius: var(--radius-full);
-            background: var(--secondary);
-            box-shadow: var(--neu-ext);
-            z-index: 10;
-            border: 4px solid var(--background);
-        }
-        .timeline-dot.inactive {
-            background: var(--surface-container-highest);
-        }
-        @media (min-width: 768px) {
-            .timeline-dot { display: block; }
-        }
-        .timeline-card {
-            width: 100%;
+        .education-card {
             background: var(--surface-container);
-            padding: 24px;
+            padding: 32px;
             border-radius: var(--radius);
             box-shadow: var(--neu-ext);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
-        @media (min-width: 768px) {
-            .timeline-card { width: 45%; }
-            .timeline-item:nth-child(odd) .timeline-card { text-align: right; }
-            .timeline-item:nth-child(even) .timeline-card { margin-left: auto; }
-        }
-        .timeline-card h3 {
+        .education-card h3 {
             color: var(--primary);
             margin-bottom: 4px;
         }
-        .timeline-card .meta {
+        .education-card .meta {
             color: var(--secondary);
-            margin-bottom: 12px;
+            margin-bottom: 4px;
         }
-        .timeline-placeholder {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .timeline-placeholder .bar {
-            height: 8px;
-            background: var(--surface-container-highest);
-            border-radius: var(--radius-full);
-            box-shadow: var(--neu-sun);
-        }
-        .timeline-placeholder .bar:nth-child(1) { width: 100%; }
-        .timeline-placeholder .bar:nth-child(2) { width: 83%; }
-        .timeline-placeholder .bar:nth-child(3) { width: 66%; }
 
-        /* School subcards inside main timeline card */
+        /* School subcards inside main card */
         .school-subcards {
             display: flex;
             gap: 16px;
-            margin-top: 16px;
+            margin-top: 8px;
             text-align: left;
         }
         @media (max-width: 640px) {
@@ -666,11 +603,6 @@
             font-size: 13px;
             font-weight: 500;
             color: var(--on-surface-variant);
-        }
-        @media (min-width: 768px) {
-            .timeline-item:nth-child(odd) .school-subcards {
-                justify-content: flex-end;
-            }
         }
 
 
@@ -1562,44 +1494,34 @@
             <h2 class="font-headline-lg">Education</h2>
             <p class="font-body-md">My academic journey</p>
         </div>
-        <div class="timeline-wrapper">
-            <div class="timeline-line"></div>
-            <div class="timeline-items">
-                <!-- 1 - Schooling -->
-                <div class="timeline-item">
-                    <div class="timeline-dot inactive"></div>
-                    <div class="timeline-card">
-                        <h3 class="font-headline-lg-mobile">Schooling</h3>
-                        <p class="font-body-sm meta">Greenway Modern School, Roorkee • CBSE</p>
-                        <!-- Subcards inside main card -->
-                        <div class="school-subcards">
-                            <div class="school-subcard">
-                                <h4>Class X</h4>
-                                <div class="subcard-meta">CBSE • 2020</div>
-                                <div class="subcard-result">Result: 93.40%</div>
-                            </div>
-                            <div class="school-subcard">
-                                <h4>Class XII</h4>
-                                <div class="subcard-meta">CBSE • 2022</div>
-                                <div class="subcard-result">Result: 74.80%</div>
-                            </div>
-                        </div>
+        <div class="education-grid">
+            <!-- 1 - Schooling -->
+            <div class="education-card">
+                <div>
+                    <h3 class="font-headline-lg-mobile">Schooling</h3>
+                    <p class="font-body-sm meta">Greenway Modern School, Roorkee • CBSE</p>
+                </div>
+                <!-- Subcards inside main card -->
+                <div class="school-subcards">
+                    <div class="school-subcard">
+                        <h4>Class X</h4>
+                        <div class="subcard-meta">CBSE • 2020</div>
+                        <div class="subcard-result">Result: 93.40%</div>
+                    </div>
+                    <div class="school-subcard">
+                        <h4>Class XII</h4>
+                        <div class="subcard-meta">CBSE • 2022</div>
+                        <div class="subcard-result">Result: 74.80%</div>
                     </div>
                 </div>
-                <!-- 2 - B.Tech -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <h3 class="font-headline-lg-mobile">B.Tech in Computer Science &amp; Engineering</h3>
-                        <p class="font-body-sm meta">Maharishi Markandeshwar University, Ambala • 2023 - 2027</p>
-                        <p class="font-body-sm" style="color:var(--on-surface-variant); margin-bottom:12px;">CGPA: 7.88/10 (up to 5th Semester)</p>
-                        <div class="timeline-placeholder">
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                        </div>
-                    </div>
+            </div>
+            <!-- 2 - B.Tech -->
+            <div class="education-card">
+                <div>
+                    <h3 class="font-headline-lg-mobile">B.Tech in Computer Science &amp; Engineering</h3>
+                    <p class="font-body-sm meta">Maharishi Markandeshwar University, Ambala • 2023 - 2027</p>
                 </div>
+                <p class="font-body-sm" style="color:var(--on-surface-variant); margin-top:4px;">CGPA: 7.88/10 (up to 5th Semester)</p>
             </div>
         </div>
 
