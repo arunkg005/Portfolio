@@ -524,8 +524,12 @@
             font-size: 12px; font-weight: 500; letter-spacing: 0.05em;
             color: var(--primary);
         }
-        .badge-left  { left: -15px; top: 25%; z-index: 10; }
-        .badge-right { right: -15px; bottom: 30%; z-index: 10; }
+        .badge-left  { left: -10px; top: 25%; z-index: 10; }
+        .badge-right { right: -10px; bottom: 30%; z-index: 10; }
+        @media (min-width: 768px) {
+            .badge-left  { left: 20px; }
+            .badge-right { right: 20px; }
+        }
 
         /* =============================================
            EDUCATION SECTION (Timeline)
