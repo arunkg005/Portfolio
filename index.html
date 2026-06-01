@@ -1168,26 +1168,69 @@
         /* =============================================
            CONTACT SECTION
            ============================================= */
-        .contact-center {
-            text-align: center;
-            max-width: 640px;
-            margin: 0 auto 48px;
-        }
-        .contact-center h2 { color: var(--primary); }
-        .contact-center p {
-            color: var(--on-surface-variant);
-            margin-top: 16px;
-        }
-        .contact-form-wrap {
-            max-width: 576px;
-            margin: 0 auto;
+        .contact-box-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
             background: var(--surface-container);
             padding: 32px;
             border-radius: var(--radius);
             box-shadow: var(--neu-ext);
+            max-width: 960px;
+            margin: 0 auto;
         }
         @media (min-width: 768px) {
-            .contact-form-wrap { padding: 48px; }
+            .contact-box-container {
+                grid-template-columns: 1.2fr 1.8fr;
+                padding: 48px;
+                gap: 48px;
+            }
+        }
+        .contact-info-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 24px;
+        }
+        .contact-info-panel h2 {
+            color: var(--primary);
+            margin: 0;
+        }
+        .contact-info-panel p {
+            color: var(--on-surface-variant);
+            line-height: 24px;
+            margin: 0;
+        }
+        .contact-socials {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+        }
+        .social-circle-link {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-full);
+            background: var(--surface-container);
+            box-shadow: var(--neu-ext);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--on-surface-variant);
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+        .social-circle-link:hover {
+            color: var(--primary);
+            box-shadow: var(--neu-ext-hover);
+            transform: translateY(-2px);
+        }
+        .social-circle-link:active {
+            box-shadow: var(--neu-sun);
+            transform: translateY(1px);
+        }
+        .social-circle-link svg {
+            width: 20px;
+            height: 20px;
         }
         .form-group {
             margin-bottom: 24px;
@@ -1260,59 +1303,7 @@
             color: #a5d6a7;
         }
 
-        /* =============================================
-           CALL TO ACTION BANNER
-           ============================================= */
-        .cta-banner {
-            width: 100%;
-            background: linear-gradient(135deg, var(--surface-container-high), var(--surface-container-low));
-            padding: 80px 24px;
-            text-align: center;
-            box-shadow: inset 4px 4px 10px rgba(0,0,0,0.5), inset -4px -4px 10px rgba(74,92,106,0.2);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 96px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-        }
-        .cta-banner h2 {
-            color: var(--primary);
-            margin-top: 8px;
-            margin-bottom: 8px;
-        }
-        .cta-banner p.cta-desc {
-            color: var(--on-surface-variant);
-            max-width: 600px;
-            font-size: 16px;
-            line-height: 24px;
-            margin-bottom: 8px;
-        }
-        .btn-cta {
-            background: var(--surface-container-highest);
-            color: var(--primary);
-            box-shadow: var(--neu-ext);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            padding: 16px 32px;
-            border-radius: var(--radius);
-            border: none;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-        .btn-cta:hover {
-            box-shadow: var(--neu-ext-hover);
-            transform: translateY(-2px);
-            color: var(--secondary);
-        }
-        .btn-cta:active {
-            box-shadow: var(--neu-sun-active);
-            transform: translateY(1px);
-        }
+
 
         /* =============================================
            EXTRACURRICULAR ACTIVITIES
@@ -1364,41 +1355,19 @@
         /* =============================================
            FOOTER
            ============================================= */
-        footer {
+        .simple-footer {
             width: 100%;
-            padding: 48px 0;
-            background: var(--background);
-            box-shadow: inset 4px 4px 10px rgba(0,0,0,0.5), inset -4px -4px 10px rgba(74,92,106,0.2);
+            padding: 32px 24px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             margin-top: 96px;
         }
-        .footer-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-        }
-        .footer-brand {
-            font-family: 'Sora', sans-serif;
-            font-size: 32px; font-weight: 600;
-            color: var(--primary);
-        }
-        .footer-links {
-            display: flex;
-            gap: 24px;
-        }
-        .footer-links a {
-            font-size: 14px;
-            color: var(--on-surface-variant);
-            text-decoration: none;
-            transition: all 0.25s ease;
-        }
-        .footer-links a:hover { color: var(--primary); }
-        .footer-links a:active { transform: scale(0.95); }
-        .footer-copy {
-            font-size: 14px;
+        .simple-footer p {
+            font-family: 'Hanken Grotesk', sans-serif;
+            font-size: 13px;
             color: var(--on-surface-variant);
             opacity: 0.6;
+            margin: 0;
         }
 
         /* =============================================
@@ -1935,53 +1904,56 @@
 
     <!-- ========== CONTACT ========== -->
     <section id="contact" class="animate-on-scroll">
-        <div class="contact-center">
-            <h2 class="font-headline-lg">Get In Touch</h2>
-            <p class="font-body-md">Have a project in mind or just want to say hi? Feel free to reach out!</p>
-        </div>
-        <div class="contact-form-wrap">
-            <form id="contact-form" novalidate>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input class="form-input" id="name" name="name" type="text" placeholder="John Doe" required/>
-                    <p class="error-msg" id="name-error">Please enter your name</p>
+        <div class="contact-box-container">
+            <!-- Left Panel: Info & Socials -->
+            <div class="contact-info-panel">
+                <div>
+                    <h2 class="font-headline-lg">Get In Touch</h2>
+                    <p class="font-body-md" style="margin-top: 16px;">Have a project in mind or just want to say hi? Feel free to reach out!</p>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input class="form-input" id="email" name="email" type="email" placeholder="john@example.com" required/>
-                    <p class="error-msg" id="email-error">Please enter a valid email</p>
+                
+                <div class="contact-socials">
+                    <a class="social-circle-link" href="https://linkedin.com/in/arun-gupta-446748267" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <a class="social-circle-link" href="https://github.com/arunkg005" target="_blank" rel="noopener" aria-label="GitHub">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a class="social-circle-link" href="mailto:akgindian55@gmail.com" aria-label="Email">
+                        <span class="material-symbols-outlined" style="font-size:24px;">mail</span>
+                    </a>
                 </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea class="form-input" id="message" name="message" placeholder="Your message here..." required></textarea>
-                    <p class="error-msg" id="message-error">Please enter your message</p>
-                </div>
-                <button class="btn-submit" type="submit" id="submit-btn">Submit Message</button>
-            </form>
+            </div>
+            
+            <!-- Right Panel: Form -->
+            <div class="contact-form-panel">
+                <form id="contact-form" novalidate>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input class="form-input" id="name" name="name" type="text" placeholder="John Doe" required/>
+                        <p class="error-msg" id="name-error">Please enter your name</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input class="form-input" id="email" name="email" type="email" placeholder="john@example.com" required/>
+                        <p class="error-msg" id="email-error">Please enter a valid email</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-input" id="message" name="message" placeholder="Your message here..." required></textarea>
+                        <p class="error-msg" id="message-error">Please enter your message</p>
+                    </div>
+                    <button class="btn-submit" type="submit" id="submit-btn">Submit Message</button>
+                </form>
+            </div>
         </div>
     </section>
 
 </main>
 
-<!-- ========== CALL TO ACTION BANNER ========== -->
-<section class="cta-banner">
-    <p class="font-label-md" style="letter-spacing: 0.15em; color: var(--secondary); text-transform: uppercase;">Hire Me</p>
-    <h2 class="font-headline-lg">Let's Build Something Great Together</h2>
-    <p class="cta-desc">Currently open to software development roles, ML collaborations, and freelance projects.</p>
-    <button class="btn-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
-</section>
-
 <!-- ========== FOOTER ========== -->
-<footer>
-    <div class="container footer-inner">
-        <span class="footer-brand">Portfolio</span>
-        <div class="footer-links">
-            <a href="https://linkedin.com/in/arun-gupta-446748267" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://github.com/arunkg005" target="_blank" rel="noopener">GitHub</a>
-            <a href="mailto:akgindian55@gmail.com">Email</a>
-        </div>
-        <p class="footer-copy">&copy; 2025 Arun Kumar Gupta. All rights reserved.</p>
-    </div>
+<footer class="simple-footer">
+    <p>&copy; 2026 Arun Kumar Gupta. All rights reserved.</p>
 </footer>
 
 <!-- ========== JAVASCRIPT ========== -->
