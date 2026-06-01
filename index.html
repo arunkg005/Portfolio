@@ -473,7 +473,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            clip-path: url(#rounded-hexagon-clip);
             z-index: 1;
             overflow: hidden;
         }
@@ -483,7 +483,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--surface-container-high), var(--surface-container-low));
+            background: #ffffff;
         }
         .portal-img {
             position: absolute;
@@ -1515,11 +1515,19 @@
         </div>
         <!-- Right (Image) -->
         <div class="hero-image-area">
-            <div class="hero-glow"></div>
+            <!-- Inline SVG ClipPath for Rounded Hexagon (objectBoundingBox makes it responsive) -->
+            <svg width="0" height="0" style="position: absolute;">
+                <defs>
+                    <clipPath id="rounded-hexagon-clip" clipPathUnits="objectBoundingBox">
+                        <path d="M 0.55,0.043 L 0.955,0.246 Q 0.98,0.259 0.98,0.303 L 0.98,0.697 Q 0.98,0.741 0.955,0.754 L 0.55,0.957 Q 0.5,0.982 0.45,0.957 L 0.045,0.754 Q 0.02,0.741 0.02,0.697 L 0.02,0.303 Q 0.02,0.259 0.045,0.246 L 0.45,0.043 Q 0.5,0.018 0.55,0.043 Z" />
+                    </clipPath>
+                </defs>
+            </svg>
+            
             <div class="portal-hexagon">
-                <!-- SVG Border -->
+                <!-- SVG Border with Rounded Path -->
                 <svg class="portal-frame" viewBox="0 0 400 450">
-                    <polygon points="200,8 392,116.5 392,333.5 200,442 8,333.5 8,116.5" fill="none" stroke="#CCD0CF" stroke-width="12" stroke-linejoin="round" />
+                    <path d="M 220,19.3 L 382,110.8 Q 392,116.5 392,136.5 L 392,313.5 Q 392,333.5 382,339.2 L 220,430.7 Q 200,442 180,430.7 L 18,339.2 Q 8,333.5 8,313.5 L 8,136.5 Q 8,116.5 18,110.8 L 180,19.3 Q 200,8 220,19.3 Z" fill="none" stroke="#CCD0CF" stroke-width="12" stroke-linejoin="round" />
                 </svg>
                 
                 <!-- Clipped Background and Body Layer -->
