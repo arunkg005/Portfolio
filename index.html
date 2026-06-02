@@ -68,9 +68,60 @@
 
             /* --- Neumorphic Shadows --- */
             --neu-ext:        6px 6px 16px rgba(0,0,0,0.5), -6px -6px 16px rgba(74,92,106,0.2);
+            --neu-up:         6px -6px 16px rgba(0,0,0,0.5), -6px 6px 16px rgba(74,92,106,0.2);
             --neu-ext-hover:  8px 8px 20px rgba(0,0,0,0.5), -8px -8px 20px rgba(74,92,106,0.25);
             --neu-sun:        inset 4px 4px 10px rgba(0,0,0,0.5), inset -4px -4px 10px rgba(74,92,106,0.2);
             --neu-sun-active: inset 6px 6px 14px rgba(0,0,0,0.6), inset -6px -6px 14px rgba(74,92,106,0.15);
+
+            /* --- Card Colors & Shadows (Clean, no blur, no glow) --- */
+            --card-bg:           #132537;
+            --card-shadow:       0 12px 30px rgba(0, 0, 0, 0.55);
+            --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.65);
+            --card-border:       1px solid rgba(182, 201, 219, 0.12);
+        }
+
+        html.light {
+            --background:               #f0f4f8;
+            --surface:                   #ffffff;
+            --surface-dim:               #eef2f6;
+            --surface-bright:            #ffffff;
+            --surface-container-lowest:  #ffffff;
+            --surface-container-low:     #f7f9fc;
+            --surface-container:         #edf2f7;
+            --surface-container-high:    #e2e8f0;
+            --surface-container-highest: #cbd5e1;
+            --surface-variant:           #e2e8f0;
+            --on-surface:                #0f172a;
+            --on-surface-variant:        #334155;
+            --on-background:             #0f172a;
+            --primary:                   #1e293b;
+            --on-primary:                #ffffff;
+            --primary-container:         #475569;
+            --primary-fixed-dim:         #334155;
+            --secondary:                 #3b82f6;
+            --on-secondary:              #ffffff;
+            --secondary-container:       #bfdbfe;
+            --on-secondary-container:    #1d4ed8;
+            --tertiary:                  #0ea5e9;
+            --tertiary-fixed:            #bae6fd;
+            --tertiary-fixed-dim:        #38bdf8;
+            --on-tertiary:               #ffffff;
+            --outline:                   #94a3b8;
+            --outline-variant:           #cbd5e1;
+            --inverse-surface:           #1e293b;
+            --inverse-on-surface:        #f1f5f9;
+            --error:                     #ef4444;
+
+            --neu-ext:        6px 6px 16px rgba(163, 177, 198, 0.6), -6px -6px 16px rgba(255, 255, 255, 0.8);
+            --neu-up:         6px -6px 16px rgba(163, 177, 198, 0.6), -6px 6px 16px rgba(255, 255, 255, 0.8);
+            --neu-ext-hover:  8px 8px 20px rgba(163, 177, 198, 0.7), -8px -8px 20px rgba(255, 255, 255, 0.9);
+            --neu-sun:        inset 4px 4px 10px rgba(163, 177, 198, 0.6), inset -4px -4px 10px rgba(255, 255, 255, 0.8);
+            --neu-sun-active: inset 6px 6px 14px rgba(163, 177, 198, 0.7), inset -6px -6px 14px rgba(255, 255, 255, 0.9);
+
+            --card-bg:           #ffffff;
+            --card-shadow:       0 12px 30px rgba(148, 163, 184, 0.2);
+            --card-shadow-hover: 0 20px 40px rgba(148, 163, 184, 0.3);
+            --card-border:       1px solid rgba(148, 163, 184, 0.2);
         }
 
         /* =============================================
@@ -178,7 +229,7 @@
             z-index: 50;
             width: 100%;
             background: var(--background);
-            box-shadow: 4px 4px 10px rgba(0,0,0,0.5), -4px -4px 10px rgba(74,92,106,0.2);
+            box-shadow: var(--neu-ext);
         }
         .nav-inner {
             display: flex;
@@ -272,43 +323,37 @@
             border-radius: var(--radius-sm);
         }
 
-        /* Resume Buttons */
-        .btn-resume-nav {
+        /* Theme Toggle Buttons */
+        .btn-theme-nav {
             display: none;
             align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
+            justify-content: center;
+            width: 40px; height: 40px;
             border-radius: var(--radius-full);
             background: var(--surface-container-highest);
             color: var(--primary);
             box-shadow: var(--neu-ext);
-            text-decoration: none;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.05em;
+            border: none;
+            cursor: pointer;
             transition: all 0.25s ease;
         }
-        .btn-resume-nav:hover {
+        .btn-theme-nav:hover {
             background: var(--surface-bright);
             box-shadow: var(--neu-ext-hover);
             transform: translateY(-2px);
         }
-        .btn-resume-nav:active {
+        .btn-theme-nav:active {
             box-shadow: var(--neu-sun);
             transform: translateY(1px);
         }
-        .btn-resume-nav span {
-            font-size: 18px;
-        }
         @media (min-width: 768px) {
-            .btn-resume-nav {
-                display: inline-flex;
+            .btn-theme-nav {
+                display: flex;
             }
         }
 
-        .btn-resume-mobile {
-            display: inline-flex;
+        .btn-theme-mobile {
+            display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
@@ -317,7 +362,7 @@
             background: var(--surface-container-high);
             color: var(--primary);
             box-shadow: var(--neu-ext);
-            text-decoration: none;
+            border: none;
             font-family: 'JetBrains Mono', monospace;
             font-size: 13px;
             font-weight: 500;
@@ -325,11 +370,13 @@
             transition: all 0.25s ease;
             margin-top: 12px;
             margin-bottom: 8px;
+            cursor: pointer;
+            width: 100%;
         }
-        .btn-resume-mobile:hover {
+        .btn-theme-mobile:hover {
             background: var(--surface-bright);
         }
-        .btn-resume-mobile:active {
+        .btn-theme-mobile:active {
             box-shadow: var(--neu-sun);
         }
 
@@ -338,13 +385,16 @@
            ============================================= */
         main {
             padding-top: 48px;
-            padding-bottom: 96px;
+            padding-bottom: 0;
         }
         @media (min-width: 768px) {
             main { padding-top: 96px; }
         }
         main > section {
             margin-bottom: 128px;
+        }
+        main > section:last-child {
+            margin-bottom: 0;
         }
 
         .section-header {
@@ -543,13 +593,20 @@
             }
         }
         .education-card {
-            background: var(--surface-container);
+            background: var(--card-bg);
             padding: 32px;
             border-radius: var(--radius);
-            box-shadow: var(--neu-ext);
+            border: var(--card-border);
+            box-shadow: var(--card-shadow);
             display: flex;
             flex-direction: column;
             gap: 16px;
+            transition: all 0.3s ease;
+        }
+        .education-card:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-6px);
+            border-color: rgba(182, 201, 219, 0.25);
         }
         .education-card h3 {
             color: var(--primary);
@@ -574,19 +631,20 @@
         }
         .school-subcard {
             flex: 1;
-            background: var(--surface-container-low);
-            box-shadow: var(--neu-sun);
+            background: var(--surface-container-high);
+            box-shadow: var(--neu-ext);
             border-radius: var(--radius-sm);
             padding: 16px;
             display: flex;
             flex-direction: column;
             gap: 6px;
-            border: 1px solid rgba(67,72,71,0.08);
+            border: var(--card-border);
             transition: all 0.25s ease;
         }
         .school-subcard:hover {
-            border-color: rgba(182,201,219,0.15);
+            border-color: rgba(182, 201, 219, 0.25);
             transform: translateY(-2px);
+            box-shadow: var(--neu-ext-hover);
         }
         .school-subcard h4 {
             font-family: 'Sora', sans-serif;
@@ -612,16 +670,23 @@
         .skills-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 32px;
+            gap: 24px;
         }
         @media (min-width: 768px) {
-            .skills-grid { grid-template-columns: repeat(3, 1fr); }
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
         }
         .skills-card {
-            background: var(--surface-container);
-            padding: 32px;
+            background: var(--card-bg);
+            padding: 24px;
             border-radius: var(--radius);
-            box-shadow: var(--neu-ext);
+            border: var(--card-border);
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+        .skills-card:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-6px);
+            border-color: rgba(182, 201, 219, 0.25);
         }
         .skills-card h3 {
             color: var(--primary);
@@ -637,17 +702,18 @@
         }
         .pill {
             padding: 8px 16px;
-            background: var(--surface-container-highest);
+            background: var(--surface-container-low);
             border-radius: var(--radius-full);
-            box-shadow: var(--neu-ext);
+            border: none;
+            box-shadow: var(--neu-sun);
             font-family: 'JetBrains Mono', monospace;
             font-size: 12px; font-weight: 500; letter-spacing: 0.05em;
-            color: var(--primary);
+            color: var(--secondary);
             transition: all 0.25s ease;
         }
         .pill:hover {
-            box-shadow: var(--neu-ext-hover);
-            transform: translateY(-2px);
+            background: var(--surface-container);
+            box-shadow: var(--neu-sun-active);
         }
 
         /* =============================================
@@ -711,23 +777,30 @@
             width: calc(100% - 32px);
             min-width: 280px;
             flex-shrink: 0;
-            background: var(--surface-container);
+            background: var(--card-bg);
             border-radius: var(--radius);
-            padding: 24px;
-            box-shadow: var(--neu-ext);
+            padding: 16px;
+            border: var(--card-border);
+            box-shadow: var(--card-shadow);
             scroll-snap-align: start;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 16px;
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-6px);
+            border-color: rgba(182, 201, 219, 0.25);
         }
         @media (min-width: 768px) {
             .project-card {
-                width: calc(50% - 16px);
-                min-width: 340px;
+                width: 320px;
+                min-width: 320px;
             }
         }
         .project-thumb {
-            width: 100%; height: 192px;
+            width: 100%; height: 160px;
             border-radius: var(--radius-sm);
             overflow: hidden;
             box-shadow: var(--neu-sun);
@@ -756,8 +829,8 @@
         .project-thumb-overlay span {
             font-family: 'JetBrains Mono', monospace;
             font-size: 12px; font-weight: 500;
-            color: var(--primary);
-            background: rgba(17,33,45,0.5);
+            color: #e2e8f0;
+            background: rgba(15, 23, 42, 0.7);
             backdrop-filter: blur(8px);
             padding: 4px 8px;
             border-radius: var(--radius-sm);
@@ -849,16 +922,15 @@
             width: calc(100% - 32px);
             min-width: 280px;
             flex-shrink: 0;
-            background: rgba(17,33,45,0.5);
+            background: rgba(28, 50, 68, 0.3);
             border-radius: var(--radius);
             padding: 24px;
-            box-shadow: var(--neu-sun);
-            border: 1px dashed rgba(67,72,71,0.3);
+            border: 1px dashed rgba(182, 201, 219, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
             scroll-snap-align: start;
-            transition: all 0.25s ease;
+            transition: all 0.3s ease;
         }
         @media (min-width: 768px) {
             .project-card-empty {
@@ -867,9 +939,9 @@
             }
         }
         .project-card-empty:hover {
-            box-shadow: var(--neu-ext-hover);
-            transform: translateY(-2px);
+            background: rgba(28, 50, 68, 0.5);
             border-color: var(--secondary);
+            transform: translateY(-6px);
         }
 
         .project-empty-inner {
@@ -897,10 +969,17 @@
             gap: 32px;
         }
         .experience-card {
-            background: var(--surface-container);
+            background: var(--card-bg);
             padding: 32px;
             border-radius: var(--radius);
-            box-shadow: var(--neu-ext);
+            border: var(--card-border);
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+        .experience-card:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-6px);
+            border-color: rgba(182, 201, 219, 0.25);
         }
         .experience-header {
             display: flex;
@@ -919,13 +998,13 @@
         .experience-date {
             margin-top: 8px;
             padding: 4px 16px;
-            background: var(--surface-container-highest);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: var(--radius-full);
-            box-shadow: var(--neu-sun);
+            border: 1px solid rgba(182, 201, 219, 0.15);
             display: inline-block;
             font-family: 'JetBrains Mono', monospace;
             font-size: 12px; font-weight: 500;
-            color: var(--on-surface-variant);
+            color: var(--secondary);
         }
         @media (min-width: 768px) {
             .experience-date { margin-top: 0; }
@@ -941,47 +1020,142 @@
         }
 
         /* =============================================
-           CERTIFICATES SECTION (Compact + Modal)
+           CERTIFICATES SECTION (Carousel + Lightbox)
            ============================================= */
-        .certs-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+        .certs-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 48px;
+        }
+        .certs-carousel-controls {
+            display: flex;
+            align-items: center;
             gap: 16px;
         }
-        @media (min-width: 640px) {
-            .certs-grid { grid-template-columns: repeat(4, 1fr); }
+        .certs-carousel-btn {
+            width: 44px; height: 44px;
+            border-radius: var(--radius-full);
+            box-shadow: var(--neu-ext);
+            display: flex; align-items: center; justify-content: center;
+            background: var(--surface-container);
+            border: none; cursor: pointer;
+            color: var(--primary);
+            transition: all 0.25s ease;
+        }
+        .certs-carousel-btn:hover {
+            background: var(--surface-container-highest);
+        }
+        .certs-carousel-btn:active {
+            box-shadow: var(--neu-sun);
+        }
+        .certs-track-indicator {
+            width: 80px; height: 6px;
+            border-radius: var(--radius-full);
+            box-shadow: var(--neu-sun);
+            background: var(--surface-container-low);
+            position: relative;
+            overflow: hidden;
+        }
+        .certs-track-fill {
+            position: absolute;
+            left: 0; top: 0;
+            height: 100%;
+            background: var(--secondary);
+            border-radius: var(--radius-full);
+            transition: width 0.3s ease;
+        }
+        .certs-track {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            padding: 16px 4px;
+            margin: -16px -4px;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
         }
         .cert-card {
-            position: relative;
-            background: var(--surface-container);
-            padding: 20px 14px 16px;
+            width: calc(33.333% - 16px);
+            min-width: 240px;
+            flex-shrink: 0;
+            background: var(--card-bg);
+            padding: 16px;
             border-radius: var(--radius);
-            box-shadow: var(--neu-ext);
+            border: var(--card-border);
+            box-shadow: var(--card-shadow);
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 10px;
+            gap: 12px;
             cursor: pointer;
+            scroll-snap-align: start;
             transition: all 0.3s ease;
-            border: 1px solid transparent;
         }
         .cert-card:hover {
-            box-shadow: var(--neu-ext-hover);
-            transform: translateY(-4px);
-            border-color: rgba(182,201,219,0.15);
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-6px);
+            border-color: rgba(182, 201, 219, 0.25);
         }
-        .cert-icon {
-            width: 48px; height: 48px;
+        @media (max-width: 900px) {
+            .cert-card {
+                width: calc(50% - 12px);
+                min-width: 220px;
+            }
+        }
+        @media (max-width: 540px) {
+            .cert-card {
+                width: calc(80%);
+                min-width: 200px;
+            }
+        }
+        .cert-thumb {
+            width: 100%;
+            aspect-ratio: 1.414 / 1;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(182, 201, 219, 0.1);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cert-thumb canvas {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        .cert-card:hover .cert-thumb canvas {
+            transform: scale(1.03);
+        }
+        .cert-thumb-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(5,21,32,0.7), transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 12px;
+        }
+        .cert-card:hover .cert-thumb-overlay {
+            opacity: 1;
+        }
+        .cert-thumb-overlay span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 500;
+            color: #e2e8f0;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(8px);
+            padding: 5px 12px;
             border-radius: var(--radius-full);
-            background: var(--surface-container-highest);
-            box-shadow: var(--neu-sun);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--secondary);
-            transition: all 0.3s ease;
-        }
-        .cert-card:hover .cert-icon {
-            box-shadow: var(--neu-sun), 0 0 16px rgba(182,201,219,0.15);
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         .cert-card h4 {
             color: var(--primary);
@@ -993,7 +1167,6 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 10px; font-weight: 500;
             color: var(--on-surface-variant);
-            margin-top: 2px;
         }
         .cert-status {
             font-family: 'JetBrains Mono', monospace;
@@ -1001,168 +1174,13 @@
             font-weight: 600;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            padding: 3px 8px;
+            padding: 3px 10px;
             border-radius: var(--radius-full);
-            margin-top: 4px;
-        }
-        .cert-status.in-progress {
-            background: rgba(219,238,255,0.1);
-            color: var(--tertiary);
-            border: 1px solid rgba(219,238,255,0.2);
         }
         .cert-status.earned {
             background: rgba(76,175,80,0.1);
             color: #a5d6a7;
             border: 1px solid rgba(76,175,80,0.2);
-        }
-        .cert-click-hint {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 9px;
-            color: var(--on-surface-variant);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            margin-top: 2px;
-        }
-        .cert-card:hover .cert-click-hint {
-            opacity: 0.7;
-        }
-
-        /* Certificate Modal */
-        .cert-modal-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 100;
-            background: rgba(1,16,27,0.88);
-            backdrop-filter: blur(16px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.35s ease, visibility 0.35s ease;
-        }
-        .cert-modal-overlay.open {
-            opacity: 1;
-            visibility: visible;
-        }
-        .cert-modal {
-            background: var(--surface-container);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--neu-ext), 0 0 60px rgba(0,0,0,0.4);
-            padding: 44px 36px 36px;
-            max-width: 440px;
-            width: 92%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 16px;
-            transform: scale(0.8) translateY(20px);
-            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 1px solid rgba(182,201,219,0.08);
-        }
-        .cert-modal-overlay.open .cert-modal {
-            transform: scale(1) translateY(0);
-        }
-        .cert-modal .cert-icon-lg {
-            width: 72px; height: 72px;
-            border-radius: var(--radius-full);
-            background: var(--surface-container-highest);
-            box-shadow: var(--neu-sun), 0 0 24px rgba(182,201,219,0.1);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--secondary);
-        }
-        .cert-modal h3 {
-            color: var(--primary);
-            font-family: 'Sora', sans-serif;
-            font-size: 20px;
-            font-weight: 600;
-        }
-        .cert-modal .cert-modal-issuer {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            color: var(--secondary);
-            letter-spacing: 0.03em;
-        }
-        .cert-modal .cert-modal-date {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            color: var(--on-surface-variant);
-            padding: 4px 14px;
-            background: var(--surface-container-highest);
-            border-radius: var(--radius-full);
-            box-shadow: var(--neu-sun);
-        }
-        .cert-modal .cert-modal-desc {
-            font-size: 14px;
-            line-height: 22px;
-            color: var(--on-surface-variant);
-            max-width: 360px;
-        }
-        .cert-modal .cert-modal-status {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            padding: 5px 14px;
-            border-radius: var(--radius-full);
-        }
-        .cert-modal .cert-modal-status.in-progress {
-            background: rgba(219,238,255,0.1);
-            color: var(--tertiary);
-            border: 1px solid rgba(219,238,255,0.25);
-        }
-        .cert-modal .cert-modal-status.earned {
-            background: rgba(76,175,80,0.12);
-            color: #a5d6a7;
-            border: 1px solid rgba(76,175,80,0.25);
-        }
-        .cert-modal-close {
-            position: absolute;
-            top: 14px; right: 14px;
-            width: 34px; height: 34px;
-            border-radius: var(--radius-full);
-            background: var(--surface-container-highest);
-            box-shadow: var(--neu-ext);
-            border: none; cursor: pointer;
-            color: var(--primary);
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.2s ease;
-        }
-        .cert-modal-close:hover {
-            background: var(--surface-bright);
-            transform: scale(1.1);
-        }
-
-        .btn-cert-view {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: var(--radius-full);
-            background: var(--surface-container-highest);
-            color: var(--primary);
-            box-shadow: var(--neu-ext);
-            border: none;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            margin-top: 24px;
-            text-decoration: none;
-        }
-        .btn-cert-view:hover {
-            background: var(--surface-bright);
-            box-shadow: var(--neu-ext-hover);
-            transform: translateY(-2px);
-        }
-        .btn-cert-view:active {
-            box-shadow: var(--neu-sun);
-            transform: translateY(1px);
         }
 
         /* =============================================
@@ -1172,18 +1190,32 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 32px;
-            background: var(--surface-container);
+            background: var(--card-bg);
             padding: 32px;
             border-radius: var(--radius);
-            box-shadow: var(--neu-ext);
-            max-width: 960px;
+            border: var(--card-border);
+            box-shadow: var(--card-shadow);
+            max-width: 1060px;
             margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+        .contact-box-container:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-6px);
+            border-color: rgba(182, 201, 219, 0.25);
         }
         @media (min-width: 768px) {
             .contact-box-container {
                 grid-template-columns: 1.2fr 1.8fr;
                 padding: 48px;
-                gap: 48px;
+                gap: 0;
+            }
+            .contact-info-panel {
+                border-right: var(--card-border);
+                padding-right: 48px;
+            }
+            .contact-form-panel {
+                padding-left: 48px;
             }
         }
         .contact-info-panel {
@@ -1245,22 +1277,25 @@
         }
         .form-input {
             width: 100%;
-            background: var(--surface-container-low);
-            box-shadow: var(--neu-sun);
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(182, 201, 219, 0.15);
             border-radius: var(--radius-full);
             padding: 16px 24px;
-            border: none; outline: none;
+            outline: none;
             font-family: 'Hanken Grotesk', sans-serif;
             font-size: 14px;
             color: var(--primary);
-            transition: box-shadow 0.3s ease;
+            transition: all 0.3s ease;
         }
         .form-input::placeholder { color: rgba(195,199,198,0.5); }
         .form-input:focus {
-            box-shadow: var(--neu-sun), 0 0 0 2px rgba(182,201,219,0.5);
+            background: rgba(0, 0, 0, 0.3);
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 2px rgba(182, 201, 219, 0.2);
         }
         .form-input.error {
-            box-shadow: var(--neu-sun), 0 0 0 2px rgba(255,180,171,0.5);
+            border-color: var(--error);
+            box-shadow: 0 0 0 2px rgba(255, 180, 171, 0.25);
         }
         textarea.form-input {
             border-radius: var(--radius-md);
@@ -1317,10 +1352,11 @@
             .activities-grid { grid-template-columns: repeat(4, 1fr); }
         }
         .activity-card {
-            background: var(--surface-container);
+            background: var(--card-bg);
             padding: 24px 16px;
             border-radius: var(--radius);
-            box-shadow: var(--neu-ext);
+            border: var(--card-border);
+            box-shadow: var(--card-shadow);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1329,15 +1365,15 @@
             transition: all 0.3s ease;
         }
         .activity-card:hover {
-            box-shadow: var(--neu-ext-hover);
-            transform: translateY(-4px);
-            border-color: rgba(182,201,219,0.15);
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-6px);
+            border-color: rgba(182, 201, 219, 0.25);
         }
         .activity-icon {
             width: 48px; height: 48px;
             border-radius: var(--radius-full);
-            background: var(--surface-container-highest);
-            box-shadow: var(--neu-sun);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(182, 201, 219, 0.15);
             display: flex; align-items: center; justify-content: center;
             color: var(--secondary);
         }
@@ -1359,8 +1395,11 @@
             width: 100%;
             padding: 32px 24px;
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 96px;
+            background: var(--background);
+            box-shadow: var(--neu-up);
+            margin-top: 32px;
+            position: relative;
+            z-index: 10;
         }
         .simple-footer p {
             font-family: 'Hanken Grotesk', sans-serif;
@@ -1416,7 +1455,7 @@
 
         <!-- Desktop Nav Links -->
         <div class="nav-links-desktop">
-            <a class="nav-link active" href="#hero">Home</a>
+            <a class="nav-link active" href="#hero">About Me</a>
             <a class="nav-link" href="#projects">Projects</a>
             <a class="nav-link" href="#experience">Experience</a>
             <a class="nav-link" href="#certificates">Certifications</a>
@@ -1426,11 +1465,10 @@
 
         <!-- Actions -->
         <div class="nav-actions">
-            <!-- Resume Download Button (Desktop) -->
-            <a class="btn-resume-nav" href="assets/Arun_Kumar_Gupta_Resume.pdf" target="_blank" download>
-                <span class="material-symbols-outlined">download</span>
-                <span>Resume</span>
-            </a>
+            <!-- Theme Toggle Button (Desktop) -->
+            <button class="btn-theme-nav" id="theme-toggle-desktop" aria-label="Toggle Theme">
+                <span class="material-symbols-outlined" id="theme-icon-desktop" style="font-size:20px;">light_mode</span>
+            </button>
             <!-- Hamburger (mobile) -->
             <button class="nav-hamburger" id="hamburger-btn" aria-label="Menu">
                 <span class="material-symbols-outlined" style="font-size:24px;">menu</span>
@@ -1439,16 +1477,16 @@
     </div>
     <!-- Mobile menu -->
     <div class="mobile-menu" id="mobile-menu">
-        <a class="nav-link active" href="#hero">Home</a>
+        <a class="nav-link active" href="#hero">About Me</a>
         <a class="nav-link" href="#projects">Projects</a>
         <a class="nav-link" href="#experience">Experience</a>
         <a class="nav-link" href="#certificates">Certifications</a>
         <a class="nav-link" href="#activities">Activities</a>
         <a class="nav-link" href="#contact">Contact</a>
-        <a class="btn-resume-mobile" href="assets/Arun_Kumar_Gupta_Resume.pdf" target="_blank" download>
-            <span class="material-symbols-outlined">download</span>
-            <span>Download Resume</span>
-        </a>
+        <button class="btn-theme-mobile" id="theme-toggle-mobile" aria-label="Toggle Theme">
+            <span class="material-symbols-outlined" id="theme-icon-mobile">light_mode</span>
+            <span id="theme-text-mobile">Switch to Light Mode</span>
+        </button>
     </div>
 </nav>
 
@@ -1464,23 +1502,24 @@
                 <h2 class="font-headline-lg-mobile hero-subtitle">Software Developer &amp; ML Enthusiast</h2>
             </div>
             <p class="font-body-md hero-desc">
-                Crafting intelligent systems and intuitive interfaces. Specialized in bridging the gap between robust software development and machine learning to build seamless, high-performance applications.
+                Passionate about building, learning, and experimenting with modern technologies. Interested in AI, backend development, automation, and data-driven applications.
             </p>
 
             <div class="hero-actions">
-                <button class="btn-primary btn-neu" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-                    Let's Talk
+                <button class="btn-primary btn-neu" onclick="window.open('assets/Arun_Kumar_Gupta_Resume.pdf', '_blank')" style="display:inline-flex; align-items:center; justify-content:center; gap:8px;">
+                    <span class="material-symbols-outlined" style="font-size:20px;">download</span>
+                    Resume
                 </button>
-                <div class="social-area">
-                    <span class="font-body-sm">Check Out My</span>
-                    <a class="social-link" href="https://github.com/arunkg005" target="_blank" rel="noopener" aria-label="GitHub">
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <span class="font-body-md" style="color: var(--primary);">Check Out My</span>
+                    <a class="social-circle-link" href="https://github.com/arunkg005" target="_blank" rel="noopener" aria-label="GitHub">
                         <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                     </a>
-                    <a class="social-link" href="https://linkedin.com/in/arun-gupta-446748267" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <a class="social-circle-link" href="https://linkedin.com/in/arun-gupta-446748267" target="_blank" rel="noopener" aria-label="LinkedIn">
                         <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     </a>
-                    <a class="social-link" href="mailto:akgindian55@gmail.com" aria-label="Email">
-                        <span class="material-symbols-outlined" style="font-size:20px;">mail</span>
+                    <a class="social-circle-link" href="mailto:akgindian55@gmail.com" aria-label="Email">
+                        <span class="material-symbols-outlined" style="font-size:20px; display:flex; align-items:center; justify-content:center; line-height:1;">mail</span>
                     </a>
                 </div>
             </div>
@@ -1535,19 +1574,25 @@
             <div class="education-card">
                 <div>
                     <h3 class="font-headline-lg-mobile">Schooling</h3>
-                    <p class="font-body-sm meta">Greenway Modern School, Roorkee • CBSE</p>
+                    <p class="font-body-sm meta"><a href="https://greenwayroorkee.com/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline; text-decoration-color: var(--secondary); text-underline-offset: 4px;">Greenway Modern School, Roorkee</a> • CBSE</p>
                 </div>
                 <!-- Subcards inside main card -->
                 <div class="school-subcards">
                     <div class="school-subcard">
                         <h4>Class X</h4>
                         <div class="subcard-meta">CBSE • 2020</div>
-                        <div class="subcard-result">Result: 93.40%</div>
+                        <div class="subcard-result">
+                            Result: 93.40% 
+                            <a href="assets/cbse_10th_result_2020.pdf" target="_blank" rel="noopener" style="font-size:12px; color:var(--secondary); text-decoration:underline; margin-left: 6px;">View</a>
+                        </div>
                     </div>
                     <div class="school-subcard">
                         <h4>Class XII</h4>
                         <div class="subcard-meta">CBSE • 2022</div>
-                        <div class="subcard-result">Result: 74.80%</div>
+                        <div class="subcard-result">
+                            Result: 74.80% 
+                            <a href="assets/cbse_12th_result_2022.pdf" target="_blank" rel="noopener" style="font-size:12px; color:var(--secondary); text-decoration:underline; margin-left: 6px;">View</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1555,9 +1600,9 @@
             <div class="education-card">
                 <div>
                     <h3 class="font-headline-lg-mobile">B.Tech in Computer Science &amp; Engineering</h3>
-                    <p class="font-body-sm meta">Maharishi Markandeshwar University, Ambala • 2023 - 2027</p>
+                    <p class="font-body-sm meta"><a href="https://www.mmumullana.org/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline; text-decoration-color: var(--secondary); text-underline-offset: 4px;">Maharishi Markandeshwar University, Ambala</a> • 2023 - 2027</p>
                 </div>
-                <p class="font-body-sm" style="color:var(--on-surface-variant); margin-top:4px;">CGPA: 7.88/10 (up to 5th Semester)</p>
+                <p class="font-body-sm" style="color:var(--on-surface-variant); margin-top:4px;">CGPA: 7.88 (up to 5th Semester)</p>
             </div>
         </div>
 
@@ -1568,44 +1613,68 @@
     <!-- ========== SKILLS ========== -->
     <section id="skills" class="animate-on-scroll">
         <div class="section-header">
-            <h2 class="font-headline-lg">Skills &amp; Expertise</h2>
-            <p class="font-body-md">Technologies I work with</p>
+            <h2 class="font-headline-lg">Skills</h2>
         </div>
-        <div class="skills-grid">
-            <!-- Core Technologies -->
+        
+        <p class="font-body-md" style="color: var(--on-surface-variant); margin-bottom: 16px;">Technical</p>
+        <div class="skills-grid" style="margin-bottom: 32px;">
             <div class="skills-card">
-                <h3 class="font-headline-lg-mobile">Core Technologies</h3>
-                <div class="pills-wrap">
+                <h3 class="font-headline-lg-mobile" style="margin-bottom: 16px;">Languages</h3>
+                <div class="pills-wrap" style="margin-bottom: 24px;">
                     <span class="pill">Python</span>
                     <span class="pill">Java</span>
                     <span class="pill">SQL</span>
-                    <span class="pill">REST API</span>
+                </div>
+
+                <h3 class="font-headline-lg-mobile" style="margin-bottom: 16px;">Frameworks &amp; Technologies</h3>
+                <div class="pills-wrap">
                     <span class="pill">Django</span>
                     <span class="pill">Flask</span>
-                    <span class="pill">ML</span>
+                    <span class="pill">REST APIs</span>
+                    <span class="pill">Machine Learning</span>
                     <span class="pill">NLP</span>
                 </div>
             </div>
-            <!-- Tools & Libraries -->
+
             <div class="skills-card">
-                <h3 class="font-headline-lg-mobile">Tools &amp; Libraries</h3>
-                <div class="pills-wrap">
-                    <span class="pill">PostgreSQL</span>
+                <h3 class="font-headline-lg-mobile" style="margin-bottom: 16px;">Tools &amp; Platforms</h3>
+                <div class="pills-wrap" style="margin-bottom: 24px;">
+                    <span class="pill">Git</span>
                     <span class="pill">GitHub</span>
+                    <span class="pill">Docker</span>
+                    <span class="pill">PostgreSQL</span>
                     <span class="pill">AWS</span>
                     <span class="pill">Render</span>
-                    <span class="pill">Docker</span>
                     <span class="pill">Android Studio</span>
                 </div>
-            </div>
-            <!-- Soft Skills -->
-            <div class="skills-card">
-                <h3 class="font-headline-lg-mobile">Soft Skills</h3>
+
+                <h3 class="font-headline-lg-mobile" style="margin-bottom: 16px;">AI Tools</h3>
                 <div class="pills-wrap">
-                    <span class="pill">Communication</span>
-                    <span class="pill">Team Collaboration</span>
+                    <span class="pill">GitHub Copilot</span>
+                    <span class="pill">Codex</span>
+                    <span class="pill">Antigravity</span>
+                </div>
+            </div>
+        </div>
+
+        <p class="font-body-md" style="color: var(--on-surface-variant); margin-bottom: 16px;">Soft Skills</p>
+        <div class="skills-grid">
+            <div class="skills-card">
+                <h3 class="font-headline-lg-mobile" style="margin-bottom: 16px;">Professional Skills</h3>
+                <div class="pills-wrap">
                     <span class="pill">Problem Solving</span>
+                    <span class="pill">Team Collaboration</span>
+                    <span class="pill">Communication</span>
                     <span class="pill">Adaptability</span>
+                    <span class="pill">Continuous Learning</span>
+                </div>
+            </div>
+
+            <div class="skills-card">
+                <h3 class="font-headline-lg-mobile" style="margin-bottom: 16px;">Languages</h3>
+                <div class="pills-wrap">
+                    <span class="pill">English</span>
+                    <span class="pill">Hindi</span>
                 </div>
             </div>
         </div>
@@ -1615,7 +1684,7 @@
     <section id="projects" class="animate-on-scroll">
         <div class="projects-header">
             <div>
-                <h2 class="font-headline-lg" style="color:var(--primary);">Featured Projects</h2>
+                <h2 class="font-headline-lg" style="color:var(--primary);">Projects</h2>
                 <p class="font-body-md" style="color:var(--on-surface-variant); margin-top:8px;">A selection of my recent work</p>
             </div>
             <div class="carousel-controls">
@@ -1651,12 +1720,35 @@
                     </div>
                 </div>
                 <div class="project-actions">
-                    <a class="btn-project-live" href="https://adapt-caretaker.onrender.com" target="_blank" rel="noopener">
-                        <span class="material-symbols-outlined" style="font-size:16px;">visibility</span>
+                    <a class="btn-project-live" href="https://adapt-web-tbc7.onrender.com/" target="_blank" rel="noopener">
                         <span>Live Demo</span>
                     </a>
                     <a class="btn-project-code" href="https://github.com/arunkg005/ADAPT" target="_blank" rel="noopener">
                         <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Project 1.5 - SAIGE -->
+            <div class="project-card">
+                <div class="project-thumb">
+                    <img alt="SAIGE Platform Interface" src="assets/saige_project.png"/>
+                    <div class="project-thumb-overlay">
+                        <span>AI / Web App</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="font-headline-lg-mobile">SAIGE</h3>
+                    <p class="font-body-sm">A cutting-edge application focused on advanced data intelligence and AI-driven automation for enhanced decision making and streamlined workflows.</p>
+                    <div class="project-tech-tags">
+                        <span>React</span>
+                        <span>Python</span>
+                        <span>Machine Learning</span>
+                        <span>API</span>
+                    </div>
+                </div>
+                <div class="project-actions">
+                    <a class="btn-project-code" href="https://github.com/arunkg005/Saige" target="_blank" rel="noopener" style="flex: 1;">
+                        <span>GitHub Repository</span>
                     </a>
                 </div>
             </div>
@@ -1680,11 +1772,10 @@
                     </div>
                 </div>
                 <div class="project-actions">
-                    <a class="btn-project-live" href="https://churn-dashboard.onrender.com" target="_blank" rel="noopener">
-                        <span class="material-symbols-outlined" style="font-size:16px;">visibility</span>
+                    <a class="btn-project-live" href="https://arun-churn-api.onrender.com/" target="_blank" rel="noopener">
                         <span>Live Demo</span>
                     </a>
-                    <a class="btn-project-code" href="https://github.com/arunkg005/churn-prediction" target="_blank" rel="noopener">
+                    <a class="btn-project-code" href="https://github.com/arunkg005/churn-prediction-api" target="_blank" rel="noopener">
                         <span>GitHub</span>
                     </a>
                 </div>
@@ -1709,11 +1800,10 @@
                     </div>
                 </div>
                 <div class="project-actions">
-                    <a class="btn-project-live" href="https://digit-rec.onrender.com" target="_blank" rel="noopener">
-                        <span class="material-symbols-outlined" style="font-size:16px;">visibility</span>
+                    <a class="btn-project-live" href="https://huggingface.co/spaces/Arun-Acc001/Handwritten_Digit_Recognition" target="_blank" rel="noopener">
                         <span>Live Demo</span>
                     </a>
-                    <a class="btn-project-code" href="https://github.com/arunkg005/digit-recognition" target="_blank" rel="noopener">
+                    <a class="btn-project-code" href="https://github.com/arunkg005/Handwriiten-Digit-Recongnition" target="_blank" rel="noopener">
                         <span>GitHub</span>
                     </a>
                 </div>
@@ -1737,11 +1827,11 @@
                     </div>
                 </div>
                 <div class="project-actions">
-                    <a class="btn-project-live" href="https://github.com/arunkg005/SysPulse/releases" target="_blank" rel="noopener">
+                    <a class="btn-project-live" href="https://github.com/arunkg005/Syspulse/releases/tag/v1.0.0" target="_blank" rel="noopener">
                         <span class="material-symbols-outlined" style="font-size:16px;">download</span>
                         <span>Get APK</span>
                     </a>
-                    <a class="btn-project-code" href="https://github.com/arunkg005/SysPulse" target="_blank" rel="noopener">
+                    <a class="btn-project-code" href="https://github.com/arunkg005/Syspulse" target="_blank" rel="noopener">
                         <span>GitHub</span>
                     </a>
                 </div>
@@ -1801,71 +1891,59 @@
 
     <!-- ========== CERTIFICATES ========== -->
     <section id="certificates" class="animate-on-scroll">
-        <div class="section-header">
-            <h2 class="font-headline-lg">Certificates</h2>
-            <p class="font-body-md">Professional certifications and courses</p>
-        </div>
-        <div class="certs-grid">
-            <div class="cert-card" data-cert="cad">
-                <div class="cert-icon">
-                    <span class="material-symbols-outlined" style="font-size:24px;">workspace_premium</span>
-                </div>
-                <h4>ServiceNow CAD</h4>
-                <p class="cert-issuer">ServiceNow</p>
-                <span class="cert-status in-progress">In Progress</span>
-                <span class="cert-click-hint">Click to view</span>
+        <div class="certs-header">
+            <div>
+                <h2 class="font-headline-lg" style="color:var(--primary);">Certificates</h2>
+                <p class="font-body-md" style="color:var(--on-surface-variant); margin-top:8px;">Professional certifications and courses</p>
             </div>
-            <div class="cert-card" data-cert="csa">
-                <div class="cert-icon">
-                    <span class="material-symbols-outlined" style="font-size:24px;">workspace_premium</span>
+            <div class="certs-carousel-controls">
+                <button class="certs-carousel-btn" id="certs-prev" aria-label="Previous">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <div class="certs-track-indicator">
+                    <div class="certs-track-fill" id="certs-fill" style="width:20%"></div>
+                </div>
+                <button class="certs-carousel-btn" id="certs-next" aria-label="Next">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+            </div>
+        </div>
+        <div class="certs-track hide-scrollbar" id="certs-track">
+            <!-- Cert 1: Agile Scrum / Infosys Springboard -->
+            <div class="cert-card" data-cert="agile" data-pdf="assets/Infosys_Agile_Scrum_Certificate.pdf">
+                <div class="cert-thumb">
+                    <canvas id="cert-thumb-agile"></canvas>
+                    <div class="cert-thumb-overlay">
+                        <span>View</span>
+                    </div>
+                </div>
+                <h4>Agile Scrum in Practice</h4>
+                <p class="cert-issuer">Infosys Springboard</p>
+            </div>
+            <!-- Cert 2: ServiceNow CSA -->
+            <div class="cert-card" data-cert="csa" data-pdf="assets/ServiceNow_CSA_Certificate.pdf">
+                <div class="cert-thumb">
+                    <canvas id="cert-thumb-csa"></canvas>
+                    <div class="cert-thumb-overlay">
+                        <span>View</span>
+                    </div>
                 </div>
                 <h4>ServiceNow CSA</h4>
                 <p class="cert-issuer">ServiceNow</p>
-                <span class="cert-status earned">Earned</span>
-                <span class="cert-click-hint">Click to view</span>
             </div>
-            <div class="cert-card" data-cert="salesforce">
-                <div class="cert-icon">
-                    <span class="material-symbols-outlined" style="font-size:24px;">military_tech</span>
+            <!-- Cert 3: Machine Learning -->
+            <div class="cert-card" data-cert="ml" data-pdf="assets/Machine_Learning_Certificate.pdf">
+                <div class="cert-thumb">
+                    <canvas id="cert-thumb-ml"></canvas>
+                    <div class="cert-thumb-overlay">
+                        <span>View</span>
+                    </div>
                 </div>
-                <h4>Trailhead Champion</h4>
-                <p class="cert-issuer">Salesforce</p>
-                <span class="cert-status earned">Earned</span>
-                <span class="cert-click-hint">Click to view</span>
-            </div>
-            <div class="cert-card" data-cert="agile">
-                <div class="cert-icon">
-                    <span class="material-symbols-outlined" style="font-size:24px;">school</span>
-                </div>
-                <h4>Agile Scrum</h4>
+                <h4>Machine Learning</h4>
                 <p class="cert-issuer">Infosys Springboard</p>
-                <span class="cert-status earned">Earned</span>
-                <span class="cert-click-hint">Click to view</span>
             </div>
         </div>
     </section>
-
-    <!-- Certificate Modal -->
-    <div class="cert-modal-overlay" id="cert-modal-overlay">
-        <div class="cert-modal" style="position:relative;">
-            <button class="cert-modal-close" id="cert-modal-close" aria-label="Close">
-                <span class="material-symbols-outlined" style="font-size:18px;">close</span>
-            </button>
-            <div class="cert-icon-lg">
-                <span class="material-symbols-outlined" id="cert-modal-icon" style="font-size:36px;">workspace_premium</span>
-            </div>
-            <h3 id="cert-modal-title"></h3>
-            <p class="cert-modal-issuer" id="cert-modal-issuer"></p>
-            <span class="cert-modal-date" id="cert-modal-date"></span>
-            <p class="cert-modal-desc" id="cert-modal-desc"></p>
-            <span class="cert-modal-status" id="cert-modal-status"></span>
-            <!-- View PDF Link -->
-            <a class="btn-cert-view" id="cert-modal-link" href="#" target="_blank">
-                <span class="material-symbols-outlined">visibility</span>
-                <span>View Certificate</span>
-            </a>
-        </div>
-    </div>
 
     <!-- ========== EXTRACURRICULAR ACTIVITIES ========== -->
     <section id="activities" class="animate-on-scroll">
@@ -1923,7 +2001,7 @@
                         <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                     </a>
                     <a class="social-circle-link" href="mailto:akgindian55@gmail.com" aria-label="Email">
-                        <span class="material-symbols-outlined" style="font-size:24px;">mail</span>
+                        <span class="material-symbols-outlined" style="font-size:20px; display:flex; align-items:center; justify-content:center; line-height:1;">mail</span>
                     </a>
                 </div>
             </div>
@@ -1960,6 +2038,7 @@
 </footer>
 
 <!-- ========== JAVASCRIPT ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
 (function() {
     'use strict';
@@ -2134,98 +2213,156 @@
     });
 
     // ----------------------------
-    // 8. Certificate Modal
+    // 8. Certificate Carousel
     // ----------------------------
-    var certData = {
-        cad: {
-            title: 'ServiceNow CAD',
-            issuer: 'ServiceNow',
-            date: 'Dec 2025 - Present',
-            icon: 'workspace_premium',
-            status: 'in-progress',
-            statusLabel: 'In Progress',
-            desc: 'CAD certification focused on developing custom applications, workflows, and solutions on the ServiceNow platform using low-code and scripting concepts.',
-            file: null
-        },
-        csa: {
-            title: 'ServiceNow Certified System Administrator',
-            issuer: 'ServiceNow',
-            date: 'Issued: May 30, 2026',
-            icon: 'workspace_premium',
-            status: 'earned',
-            statusLabel: 'Earned',
-            desc: 'CSA certification that validates knowledge of system administration, user management, configuration, and core functionalities of the ServiceNow platform.',
-            file: 'assets/ServiceNow_CSA_Certificate.pdf'
-        },
-        salesforce: {
-            title: 'Salesforce Trailhead Champion',
-            issuer: 'Salesforce',
-            date: 'Earned',
-            icon: 'military_tech',
-            status: 'earned',
-            statusLabel: 'Earned',
-            desc: 'Salesforce Trailhead Champion and Innovator Badge recognizing skills in the Salesforce ecosystem and community leadership.',
-            file: null
-        },
-        agile: {
-            title: 'Agile Scrum in Practice',
-            issuer: 'Infosys Springboard',
-            date: 'Issued: May 7, 2025',
-            icon: 'school',
-            status: 'earned',
-            statusLabel: 'Earned',
-            desc: 'Professional certification in Agile Scrum methodologies covering sprint planning, backlog management, and iterative software delivery.',
-            file: 'assets/Infosys_Agile_Scrum_Certificate.pdf'
+    var certsTrack = document.getElementById('certs-track');
+    var certsPrev = document.getElementById('certs-prev');
+    var certsNext = document.getElementById('certs-next');
+    var certsFill = document.getElementById('certs-fill');
+
+    function getCertsScrollAmount() {
+        var card = certsTrack.querySelector('.cert-card');
+        return card ? card.offsetWidth + 24 : 300; // card width + gap
+    }
+    function updateCertsTrackFill() {
+        var maxScroll = certsTrack.scrollWidth - certsTrack.clientWidth;
+        var pct = maxScroll > 0 ? (certsTrack.scrollLeft / maxScroll) * 100 : 0;
+        certsFill.style.width = Math.max(20, pct) + '%';
+    }
+    certsPrev.addEventListener('click', function() {
+        certsTrack.scrollBy({ left: -getCertsScrollAmount(), behavior: 'smooth' });
+    });
+    certsNext.addEventListener('click', function() {
+        certsTrack.scrollBy({ left: getCertsScrollAmount(), behavior: 'smooth' });
+    });
+    certsTrack.addEventListener('scroll', updateCertsTrackFill);
+
+    // ----------------------------
+    // 9. Certificate Thumbnails (PDF.js) + Open PDF on click
+    // ----------------------------
+    var pdfjsLib = window.pdfjsLib;
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    // Render a PDF page into a canvas (thumbnail only)
+    function renderPdfToCanvas(pdfUrl, canvas, scale) {
+        return pdfjsLib.getDocument(pdfUrl).promise.then(function(pdf) {
+            return pdf.getPage(1);
+        }).then(function(page) {
+            var viewport = page.getViewport({ scale: scale });
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            var ctx = canvas.getContext('2d');
+            return page.render({ canvasContext: ctx, viewport: viewport }).promise;
+        });
+    }
+
+    // Render thumbnails on load
+    document.querySelectorAll('.cert-card[data-pdf]').forEach(function(card) {
+        var pdfUrl = card.getAttribute('data-pdf');
+        var certKey = card.getAttribute('data-cert');
+        var thumbCanvas = document.getElementById('cert-thumb-' + certKey);
+        if (thumbCanvas && pdfUrl) {
+            renderPdfToCanvas(pdfUrl, thumbCanvas, 1.0);
         }
-    };
+    });
 
-    var certOverlay = document.getElementById('cert-modal-overlay');
-    var certTitle = document.getElementById('cert-modal-title');
-    var certIssuerEl = document.getElementById('cert-modal-issuer');
-    var certDate = document.getElementById('cert-modal-date');
-    var certDesc = document.getElementById('cert-modal-desc');
-    var certStatus = document.getElementById('cert-modal-status');
-    var certIcon = document.getElementById('cert-modal-icon');
-    var certLink = document.getElementById('cert-modal-link');
-    var certClose = document.getElementById('cert-modal-close');
-
-    document.querySelectorAll('.cert-card[data-cert]').forEach(function(card) {
+    // Open actual PDF in new tab on card click
+    document.querySelectorAll('.cert-card[data-pdf]').forEach(function(card) {
         card.addEventListener('click', function() {
-            var key = this.getAttribute('data-cert');
-            var data = certData[key];
-            if (data) {
-                certTitle.textContent = data.title;
-                certIssuerEl.textContent = data.issuer;
-                certDate.textContent = data.date;
-                certDesc.textContent = data.desc;
-                certIcon.textContent = data.icon;
-                certStatus.textContent = data.statusLabel;
-                certStatus.className = 'cert-modal-status ' + data.status;
-                
-                // Show/hide PDF button
-                if (data.file) {
-                    certLink.href = data.file;
-                    certLink.style.display = 'inline-flex';
-                } else {
-                    certLink.style.display = 'none';
-                }
-                
-                certOverlay.classList.add('open');
+            var pdfUrl = this.getAttribute('data-pdf');
+            if (pdfUrl) {
+                window.open(pdfUrl, '_blank');
             }
         });
     });
 
-    function closeCertModal() {
-        certOverlay.classList.remove('open');
+    // ----------------------------
+    // 10. Theme Toggle (Light/Dark Mode)
+    // ----------------------------
+    var themeToggleDesktop = document.getElementById('theme-toggle-desktop');
+    var themeToggleMobile = document.getElementById('theme-toggle-mobile');
+    var themeIconDesktop = document.getElementById('theme-icon-desktop');
+    var themeIconMobile = document.getElementById('theme-icon-mobile');
+    var themeTextMobile = document.getElementById('theme-text-mobile');
+    
+    // Check saved theme or system preference
+    var savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
+        updateThemeIcons('light');
     }
 
-    certClose.addEventListener('click', closeCertModal);
-    certOverlay.addEventListener('click', function(e) {
-        if (e.target === certOverlay) closeCertModal();
-    });
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeCertModal();
-    });
+    function updateThemeIcons(theme) {
+        if (theme === 'light') {
+            if (themeIconDesktop) themeIconDesktop.textContent = 'dark_mode';
+            if (themeIconMobile) themeIconMobile.textContent = 'dark_mode';
+            if (themeTextMobile) themeTextMobile.textContent = 'Switch to Dark Mode';
+        } else {
+            if (themeIconDesktop) themeIconDesktop.textContent = 'light_mode';
+            if (themeIconMobile) themeIconMobile.textContent = 'light_mode';
+            if (themeTextMobile) themeTextMobile.textContent = 'Switch to Light Mode';
+        }
+    }
+
+    function toggleTheme() {
+        var isLight = document.documentElement.classList.contains('light');
+        if (isLight) {
+            document.documentElement.classList.remove('light');
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+            updateThemeIcons('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+            localStorage.setItem('theme', 'light');
+            updateThemeIcons('light');
+        }
+    }
+
+    if (themeToggleDesktop) themeToggleDesktop.addEventListener('click', toggleTheme);
+    if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
+
+    // ----------------------------
+    // 11. Drag to Scroll for Carousels
+    // ----------------------------
+    function enableDragScroll(slider) {
+        if (!slider) return;
+        var isDown = false;
+        var startX;
+        var scrollLeft;
+
+        slider.addEventListener('mousedown', function(e) {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+            slider.style.scrollSnapType = 'none'; // Disable snap while dragging
+            slider.style.scrollBehavior = 'auto'; // Instant scroll
+        });
+        slider.addEventListener('mouseleave', function() {
+            if(!isDown) return;
+            isDown = false;
+            slider.style.scrollSnapType = 'x mandatory';
+            slider.style.scrollBehavior = 'smooth';
+        });
+        slider.addEventListener('mouseup', function() {
+            if(!isDown) return;
+            isDown = false;
+            slider.style.scrollSnapType = 'x mandatory';
+            slider.style.scrollBehavior = 'smooth';
+        });
+        slider.addEventListener('mousemove', function(e) {
+            if (!isDown) return;
+            e.preventDefault();
+            var x = e.pageX - slider.offsetLeft;
+            var walk = (x - startX) * 2; // Scroll-fast multiplier
+            slider.scrollLeft = scrollLeft - walk;
+        });
+    }
+
+    enableDragScroll(document.getElementById('carousel-track'));
+    enableDragScroll(document.getElementById('certs-track'));
+
 })();
 </script>
 
