@@ -1,0 +1,321 @@
+@import "tailwindcss";
+
+/* =============================================
+   CUSTOM DESIGN SYSTEM & VARIABLES
+   ============================================= */
+:root {
+    /* --- Color Tokens (Dark Mode Default) --- */
+    --background:               #051520;
+    --surface:                   #051520;
+    --surface-dim:               #051520;
+    --surface-bright:            #2b3b48;
+    --surface-container-lowest:  #01101b;
+    --surface-container-low:     #0d1d29;
+    --surface-container:         #11212d;
+    --surface-container-high:    #1c2c38;
+    --surface-container-highest: #273643;
+    --surface-variant:           #273643;
+    --on-surface:                #d4e4f5;
+    --on-surface-variant:        #c3c7c6;
+    --on-background:             #d4e4f5;
+    --primary:                   #e8eceb;
+    --on-primary:                #2d3131;
+    --primary-container:         #ccd0cf;
+    --primary-fixed-dim:         #c3c7c6;
+    --secondary:                 #b6c9db;
+    --on-secondary:              #203240;
+    --secondary-container:       #394b5a;
+    --on-secondary-container:    #a8bbcc;
+    --tertiary:                  #dbeeff;
+    --tertiary-fixed:            #d2e5f6;
+    --tertiary-fixed-dim:        #b6c9d9;
+    --on-tertiary:               #20323f;
+    --outline:                   #8d9191;
+    --outline-variant:           #434847;
+    --inverse-surface:           #d4e4f5;
+    --inverse-on-surface:        #22323f;
+    --error:                     #ffb4ab;
+
+    /* --- Spacing --- */
+    --unit:             8px;
+    --gutter:           24px;
+    --margin-mobile:    16px;
+    --margin-desktop:   64px;
+    --container-max:    1200px;
+
+    /* --- Border Radius --- */
+    --radius-sm:   0.5rem;
+    --radius:      1rem;
+    --radius-md:   1.5rem;
+    --radius-lg:   2rem;
+    --radius-xl:   3rem;
+    --radius-full: 9999px;
+
+    /* --- Neumorphic Shadows --- */
+    --neu-ext:        6px 6px 16px rgba(0,0,0,0.5), -6px -6px 16px rgba(74,92,106,0.2);
+    --neu-up:         6px -6px 16px rgba(0,0,0,0.5), -6px 6px 16px rgba(74,92,106,0.2);
+    --neu-ext-hover:  8px 8px 20px rgba(0,0,0,0.5), -8px -8px 20px rgba(74,92,106,0.25);
+    --neu-sun:        inset 4px 4px 10px rgba(0,0,0,0.5), inset -4px -4px 10px rgba(74,92,106,0.2);
+    --neu-sun-active: inset 6px 6px 14px rgba(0,0,0,0.6), inset -6px -6px 14px rgba(74,92,106,0.15);
+
+    /* --- Card Colors & Shadows --- */
+    --card-bg:           #132537;
+    --card-shadow:       0 12px 30px rgba(0, 0, 0, 0.55);
+    --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.65);
+    --card-border:       1px solid rgba(182, 201, 219, 0.12);
+}
+
+html.light {
+    --background:               #f0f4f8;
+    --surface:                   #ffffff;
+    --surface-dim:               #eef2f6;
+    --surface-bright:            #ffffff;
+    --surface-container-lowest:  #ffffff;
+    --surface-container-low:     #f7f9fc;
+    --surface-container:         #edf2f7;
+    --surface-container-high:    #e2e8f0;
+    --surface-container-highest: #cbd5e1;
+    --surface-variant:           #e2e8f0;
+    --on-surface:                #0f172a;
+    --on-surface-variant:        #334155;
+    --on-background:             #0f172a;
+    --primary:                   #1e293b;
+    --on-primary:                #ffffff;
+    --primary-container:         #475569;
+    --primary-fixed-dim:         #334155;
+    --secondary:                 #3b82f6;
+    --on-secondary:              #ffffff;
+    --secondary-container:       #bfdbfe;
+    --on-secondary-container:    #1d4ed8;
+    --tertiary:                  #0ea5e9;
+    --tertiary-fixed:            #bae6fd;
+    --tertiary-fixed-dim:        #38bdf8;
+    --on-tertiary:               #ffffff;
+    --outline:                   #94a3b8;
+    --outline-variant:           #cbd5e1;
+    --inverse-surface:           #1e293b;
+    --inverse-on-surface:        #f1f5f9;
+    --error:                     #ef4444;
+
+    --neu-ext:        6px 6px 16px rgba(163, 177, 198, 0.6), -6px -6px 16px rgba(255, 255, 255, 0.8);
+    --neu-up:         6px -6px 16px rgba(163, 177, 198, 0.6), -6px 6px 16px rgba(255, 255, 255, 0.8);
+    --neu-ext-hover:  8px 8px 20px rgba(163, 177, 198, 0.7), -8px -8px 20px rgba(255, 255, 255, 0.9);
+    --neu-sun:        inset 4px 4px 10px rgba(163, 177, 198, 0.6), inset -4px -4px 10px rgba(255, 255, 255, 0.8);
+    --neu-sun-active: inset 6px 6px 14px rgba(163, 177, 198, 0.7), inset -6px -6px 14px rgba(255, 255, 255, 0.9);
+
+    --card-bg:           #ffffff;
+    --card-shadow:       0 12px 30px rgba(148, 163, 184, 0.2);
+    --card-shadow-hover: 0 20px 40px rgba(148, 163, 184, 0.3);
+    --card-border:       1px solid rgba(148, 163, 184, 0.2);
+}
+
+/* =============================================
+   BASE STYLES & TYPOGRAPHY
+   ============================================= */
+body {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    background: var(--background);
+    color: var(--on-background);
+    overflow-x: hidden;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.font-headline-xl {
+    font-family: 'Sora', sans-serif;
+    font-size: 48px; line-height: 56px;
+    font-weight: 700; letter-spacing: -0.02em;
+}
+.font-headline-lg {
+    font-family: 'Sora', sans-serif;
+    font-size: 32px; line-height: 40px;
+    font-weight: 600; letter-spacing: -0.01em;
+}
+.font-headline-lg-mobile {
+    font-family: 'Sora', sans-serif;
+    font-size: 24px; line-height: 32px;
+    font-weight: 600;
+}
+.font-body-md {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px; line-height: 24px; font-weight: 400;
+}
+.font-body-sm {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 14px; line-height: 20px; font-weight: 400;
+}
+.font-label-md {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; line-height: 16px;
+    font-weight: 500; letter-spacing: 0.05em;
+}
+
+/* =============================================
+   NEUMORPHIC UTILITIES
+   ============================================= */
+.neu-extruded         { box-shadow: var(--neu-ext); }
+.neu-extruded:hover   { box-shadow: var(--neu-ext-hover); }
+.neu-sunken           { box-shadow: var(--neu-sun); }
+.neu-sunken-active:active {
+    box-shadow: var(--neu-sun-active);
+    transform: translateY(1px);
+}
+
+.btn-neu {
+    box-shadow: var(--neu-ext);
+    transition: all 0.25s ease;
+}
+.btn-neu:hover {
+    box-shadow: var(--neu-ext-hover);
+    transform: translateY(-2px);
+}
+.btn-neu:active {
+    box-shadow: var(--neu-sun-active);
+    transform: translateY(1px);
+}
+
+/* =============================================
+   LAYOUT & HELPER CLASSES
+   ============================================= */
+.container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding-left: var(--margin-mobile);
+    padding-right: var(--margin-mobile);
+}
+@media (min-width: 768px) {
+    .container {
+        padding-left: var(--margin-desktop);
+        padding-right: var(--margin-desktop);
+    }
+}
+
+.hexagon-mask {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* =============================================
+   PORTAL HEXAGON STYLES
+   ============================================= */
+.portal-hexagon {
+    position: relative;
+    width: 260px;
+    height: 290px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(0px 15px 30px rgba(0, 0, 0, 0.5));
+}
+@media (min-width: 768px) {
+    .portal-hexagon {
+        width: 320px;
+        height: 360px;
+    }
+}
+.portal-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+.portal-clipped {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: url(#rounded-hexagon-clip);
+    z-index: 1;
+    overflow: hidden;
+}
+.portal-bg-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+}
+.portal-img {
+    position: absolute;
+    bottom: -5%;
+    left: 50%;
+    transform: translateX(-50%) scale(1.18);
+    transform-origin: bottom center;
+    width: 105%;
+    height: 105%;
+    object-fit: contain;
+}
+.portal-unclipped {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0 -50%, 100% -50%, 100% 45%, 0 45%);
+    z-index: 4;
+    pointer-events: none;
+}
+
+/* =============================================
+   SPECIFIC COMPONENT CARDS & LAYOUTS
+   ============================================= */
+.education-card, .skills-card, .project-card, .experience-card, .cert-card, .activity-card, .contact-box-container {
+    background: var(--card-bg);
+    border: var(--card-border);
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+}
+.education-card:hover, .skills-card:hover, .project-card:hover, .experience-card:hover, .cert-card:hover, .activity-card:hover, .contact-box-container:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-6px);
+    border-color: rgba(182, 201, 219, 0.25);
+}
+
+.school-subcard {
+    background: var(--surface-container-high);
+    box-shadow: var(--neu-ext);
+    border: var(--card-border);
+    transition: all 0.25s ease;
+}
+.school-subcard:hover {
+    border-color: rgba(182, 201, 219, 0.25);
+    transform: translateY(-2px);
+    box-shadow: var(--neu-ext-hover);
+}
+
+/* Scroll Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Headline Media Queries */
+@media (max-width: 767px) {
+    .font-headline-xl {
+        font-size: 32px;
+        line-height: 40px;
+    }
+    .font-headline-lg {
+        font-size: 24px;
+        line-height: 32px;
+    }
+}
