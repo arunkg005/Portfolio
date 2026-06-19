@@ -53,8 +53,12 @@ export default function Navbar({ theme, toggleTheme }) {
       <div className="container flex justify-between items-center h-20">
         {/* Brand */}
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-full shadow-[var(--neu-ext)] flex items-center justify-center bg-[var(--surface-container-highest)] text-[var(--primary)]">
-            <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>widgets</span>
+          <div className="w-10 h-10 rounded-full shadow-[var(--neu-ext)] flex items-center justify-center bg-[var(--surface-container-highest)] overflow-hidden">
+            <img 
+              src="assets/Arun_Kumar_Gupta_transparent.png" 
+              alt="Arun Kumar Gupta" 
+              className="w-full h-full object-cover scale-110"
+            />
           </div>
           <span className="font-['Sora'] text-2xl font-bold text-[var(--primary)]">Portfolio</span>
         </div>
