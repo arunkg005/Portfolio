@@ -1,8 +1,11 @@
 import React from 'react';
+import { portfolioData } from '../data/portfolioData';
 
 export default function Hero() {
+  const { greeting, name, role, description, resumeUrl, avatarUrl } = portfolioData.about;
+
   const handleResumeDownload = () => {
-    window.open('assets/Arun_Kumar_Gupta_Resume.pdf', '_blank');
+    window.open(resumeUrl, '_blank');
   };
 
   return (
@@ -10,12 +13,12 @@ export default function Hero() {
       {/* Left Column (Info) */}
       <div className="flex flex-col gap-8 z-10">
         <div className="flex flex-col gap-2">
-          <p className="font-body-md text-[var(--secondary)]">Hello, I'm</p>
-          <h1 className="font-headline-xl text-[var(--primary)] !leading-tight">Arun Kumar Gupta</h1>
-          <h2 className="font-headline-lg-mobile text-[var(--on-surface-variant)]">Software Developer &amp; ML Enthusiast</h2>
+          <p className="font-body-md text-[var(--secondary)]">{greeting}</p>
+          <h1 className="font-headline-xl text-[var(--primary)] !leading-tight">{name}</h1>
+          <h2 className="font-headline-lg-mobile text-[var(--on-surface-variant)]">{role}</h2>
         </div>
         <p className="font-body-md text-[var(--on-surface-variant)] max-w-[520px] !leading-relaxed">
-          Passionate about building, learning, and experimenting with modern technologies. Interested in AI, backend development, automation, and data-driven applications.
+          {description}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center pt-4">
@@ -34,7 +37,7 @@ export default function Hero() {
         {/* Glowing Background effect */}
         <div className="hero-glow absolute w-64 h-64 bg-[rgba(182,201,219,0.2)] rounded-full blur-[80px]" />
 
-        {/* Inline SVG ClipPath for Rounded Hexagon (objectBoundingBox makes it responsive) */}
+        {/* Inline SVG ClipPath for Rounded Hexagon */}
         <svg width="0" height="0" className="absolute">
           <defs>
             <clipPath id="rounded-hexagon-clip" clipPathUnits="objectBoundingBox">
@@ -52,12 +55,12 @@ export default function Hero() {
           {/* Clipped Background and Body Layer */}
           <div className="portal-clipped">
             <div className="portal-bg-pattern bg-white" />
-            <img className="portal-img" src="assets/Arun_Kumar_Gupta_transparent.png" alt="Portrait of Arun Kumar Gupta" />
+            <img className="portal-img" src={avatarUrl} alt={`Portrait of ${name}`} />
           </div>
 
           {/* Unclipped Head Layer (Only showing top part to overlap border) */}
           <div className="portal-unclipped">
-            <img className="portal-img" src="assets/Arun_Kumar_Gupta_transparent.png" alt="Portrait of Arun Kumar Gupta" />
+            <img className="portal-img" src={avatarUrl} alt={`Portrait of ${name}`} />
           </div>
         </div>
 

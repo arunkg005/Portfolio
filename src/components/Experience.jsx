@@ -1,27 +1,8 @@
 import React from 'react';
+import { portfolioData } from '../data/portfolioData';
 
 export default function Experience() {
-  const experiences = [
-    {
-      role: 'AI Web Development Intern',
-      company: 'InAmigos (Remote)',
-      date: 'June 2026 - Present',
-      points: [
-        'Utilized AI-powered tools and low-code/no-code platforms to design, build, and deploy clean personal websites.',
-        'Explored AI-driven layout generation, responsive design patterns, and digital brand presence.',
-      ],
-    },
-    {
-      role: 'Machine Learning Intern',
-      company: 'SmartED Innovations (Remote)',
-      date: 'May 2025 - Aug 2025',
-      points: [
-        'Developed a customer churn prediction system using Logistic Regression and Scikit-learn.',
-        'Designed REST APIs, handled backend workflows, and deployed the application using Docker and Render.',
-        'Built model API and contributed to full-stack development pipeline.',
-      ],
-    },
-  ];
+  const experiences = portfolioData.experience;
 
   return (
     <section id="experience" className="animate-on-scroll mb-32">

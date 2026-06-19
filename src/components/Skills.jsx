@@ -1,47 +1,8 @@
 import React from 'react';
+import { portfolioData } from '../data/portfolioData';
 
 export default function Skills() {
-  const categories = [
-    {
-      title: 'Technical Skills',
-      subsections: [
-        {
-          name: 'Languages',
-          skills: ['Python', 'Java', 'SQL'],
-        },
-        {
-          name: 'Frameworks & Technologies',
-          skills: ['Django', 'Flask', 'REST APIs', 'Machine Learning', 'NLP'],
-        },
-      ],
-    },
-    {
-      title: 'Tools & AI Platforms',
-      subsections: [
-        {
-          name: 'Tools & Platforms',
-          skills: ['Git', 'GitHub', 'Docker', 'PostgreSQL', 'AWS', 'Render', 'Android Studio'],
-        },
-        {
-          name: 'AI Tools',
-          skills: ['GitHub Copilot', 'Codex', 'Antigravity'],
-        },
-      ],
-    },
-    {
-      title: 'Interpersonal & Communication',
-      subsections: [
-        {
-          name: 'Professional Skills',
-          skills: ['Problem Solving', 'Team Collaboration', 'Communication', 'Adaptability', 'Continuous Learning'],
-        },
-        {
-          name: 'Languages Spoken',
-          skills: ['English', 'Hindi'],
-        },
-      ],
-    },
-  ];
+  const skillsData = portfolioData.skills;
 
   return (
     <section id="skills" className="animate-on-scroll mb-32">
@@ -50,7 +11,7 @@ export default function Skills() {
       </div>
 
       <div className="flex flex-col gap-12">
-        {categories.map((cat, idx) => (
+        {skillsData.map((cat, idx) => (
           <div key={idx}>
             <p className="font-body-md text-[var(--on-surface-variant)] mb-4 font-semibold tracking-wide uppercase text-sm border-b border-[var(--surface-container-highest)] pb-2">
               {cat.title}

@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { portfolioData } from '../data/portfolioData';
 
 export default function Certificates() {
   const trackRef = useRef(null);
@@ -7,26 +8,7 @@ export default function Certificates() {
   const [startX, setStartX] = useState(0);
   const [scrollLeftState, setScrollLeftState] = useState(0);
 
-  const certs = [
-    {
-      id: 'agile',
-      title: 'Agile Scrum in Practice',
-      issuer: 'Infosys Springboard',
-      pdf: 'assets/Infosys_Agile_Scrum_Certificate.pdf',
-    },
-    {
-      id: 'csa',
-      title: 'ServiceNow CSA',
-      issuer: 'ServiceNow',
-      pdf: 'assets/ServiceNow_CSA_Certificate.pdf',
-    },
-    {
-      id: 'ml',
-      title: 'Machine Learning',
-      issuer: 'Infosys Springboard',
-      pdf: 'assets/Machine_Learning_Certificate.pdf',
-    },
-  ];
+  const certs = portfolioData.certificates;
 
   const updateTrackFill = () => {
     const track = trackRef.current;
@@ -89,45 +71,8 @@ export default function Certificates() {
     }
   };
 
-  // Render PDFs onto Canvas using PDF.js
+  // Setup scroll event listeners
   useEffect(() => {
-    const renderPDFs = () => {
-      const pdfjsLib = window.pdfjsLib;
-      if (!pdfjsLib) {
-        // PDF.js not loaded yet, retry in 500ms
-        setTimeout(renderPDFs, 500);
-        return;
-      }
-
-      pdfjsLib.GlobalWorkerOptions.workerSrc =
-        'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-      certs.forEach((cert) => {
-        const canvas = document.getElementById(`cert-thumb-${cert.id}`);
-        if (!canvas) return;
-
-        pdfjsLib
-          .getDocument(cert.pdf)
-          .promise.then((pdf) => pdf.getPage(1))
-          .then((page) => {
-            const viewport = page.getViewport({ scale: 1.0 });
-            canvas.width = viewport.width;
-            canvas.height = viewport.height;
-            const ctx = canvas.getContext('2d');
-            const renderContext = {
-              canvasContext: ctx,
-              viewport: viewport,
-            };
-            return page.render(renderContext).promise;
-          })
-          .catch((err) => {
-            console.error(`Error rendering PDF ${cert.pdf}:`, err);
-          });
-      });
-    };
-
-    renderPDFs();
-
     const track = trackRef.current;
     if (track) {
       track.addEventListener('scroll', updateTrackFill);
@@ -186,15 +131,48 @@ export default function Certificates() {
             onClick={() => handleCardClick(c.pdf)}
             className="cert-card w-[calc(33.333%-16px)] lg:w-[calc(33.333%-16px)] md:w-[calc(50%-12px)] sm:w-[80%] min-w-[200px] shrink-0 bg-[var(--card-bg)] p-4 rounded-2xl border border-[var(--card-border)] shadow-[var(--card-shadow)] flex flex-col items-center text-center gap-3 cursor-pointer snap-start transition-all duration-300 hover:-translate-y-1.5"
           >
-            <div className="cert-thumb w-full aspect-[1.414/1] rounded-lg overflow-hidden bg-[rgba(255,255,255,0.03)] border border-[rgba(182,201,219,0.1)] relative flex items-center justify-center">
-              <canvas id={`cert-thumb-${c.id}`} className="w-full h-full object-contain transition-transform duration-500 hover:scale-[1.03]" />
-              <div className="cert-thumb-overlay absolute inset-0 bg-gradient-to-t from-[rgba(5,21,32,0.7)] to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-3">
+            {/* Visual badge preview instead of full PDF canvas loader */}
+            <div className="cert-thumb w-full aspect-[1.414/1] rounded-lg overflow-hidden bg-gradient-to-br from-[var(--surface-container-high)] to-[var(--surface-container-lowest)] border border-[rgba(182,201,219,0.1)] relative flex flex-col items-center justify-center p-6 gap-3">
+              {/* Glowing circular theme element */}
+              <div
+                className={`absolute w-16 h-16 rounded-full blur-[20px] opacity-15 transition-all duration-500`}
+                style={{
+                  backgroundColor:
+                    c.colorTheme === 'servicenow'
+                      ? '#4caf50'
+                      : c.colorTheme === 'agile'
+                      ? '#3b82f6'
+                      : '#ffb4ab',
+                }}
+              />
+              
+              <span
+                className="material-symbols-outlined transition-transform duration-500 hover:scale-110 z-10"
+                style={{
+                  fontSize: '44px',
+                  color:
+                    c.colorTheme === 'servicenow'
+                      ? '#81c784'
+                      : c.colorTheme === 'agile'
+                      ? '#60a5fa'
+                      : '#ffb4ab',
+                }}
+              >
+                {c.badgeIcon || 'workspace_premium'}
+              </span>
+
+              <span className="font-mono text-[9px] font-semibold uppercase tracking-wider text-[var(--on-surface-variant)] opacity-60 z-10">
+                Official Credential
+              </span>
+
+              <div className="cert-thumb-overlay absolute inset-0 bg-gradient-to-t from-[rgba(5,21,32,0.7)] to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-3 z-20">
                 <span className="font-mono text-[10px] font-medium text-[#e2e8f0] bg-[rgba(15,23,42,0.7)] backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5">
-                  <span className="material-symbols-outlined !text-[12px]">visibility</span>
-                  View
+                  <span className="material-symbols-outlined !text-[12px]">open_in_new</span>
+                  Open Certificate
                 </span>
               </div>
             </div>
+
             <h4 className="text-[var(--primary)] font-bold text-xs leading-5 min-h-[40px] flex items-center">
               {c.title}
             </h4>

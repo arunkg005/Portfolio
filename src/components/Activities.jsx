@@ -1,28 +1,8 @@
 import React from 'react';
+import { portfolioData } from '../data/portfolioData';
 
 export default function Activities() {
-  const activities = [
-    {
-      icon: 'music_note',
-      title: 'Singing',
-      desc: 'Vocal performances and creative musical hobbies.',
-    },
-    {
-      icon: 'psychology',
-      title: 'Chess',
-      desc: 'Strategic, tactical, and analytical gaming skills.',
-    },
-    {
-      icon: 'sports_tennis',
-      title: 'Badminton',
-      desc: 'Active athletic recreation and physical fitness.',
-    },
-    {
-      icon: 'emoji_events',
-      title: 'Quizzes & Hackathons',
-      desc: 'Participating in competitive quiz bowls and programming hackathons.',
-    },
-  ];
+  const activities = portfolioData.activities;
 
   return (
     <section id="activities" className="animate-on-scroll mb-32">

@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { portfolioData } from '../data/portfolioData';
 
 export default function Projects() {
   const trackRef = useRef(null);
@@ -7,56 +8,7 @@ export default function Projects() {
   const [startX, setStartX] = useState(0);
   const [scrollLeftState, setScrollLeftState] = useState(0);
 
-  const projects = [
-    {
-      title: 'ADAPT Platform',
-      type: 'Web App',
-      image: 'assets/ADAPT.png',
-      desc: 'A centralized caretaker assistance platform designed to streamline patient care management and improve caregiver accessibility across web and mobile devices. Integrates Gemini-powered AI assistance for contextual healthcare support.',
-      tags: ['Django', 'PostgreSQL', 'Gemini AI', 'Python', 'Render'],
-      liveLink: 'https://adapt-web-tbc7.onrender.com/',
-      codeLink: 'https://github.com/arunkg005/ADAPT',
-    },
-    {
-      title: 'SAIGE',
-      type: 'AI / Web App',
-      image: 'assets/Saige.png',
-      desc: 'A cutting-edge application focused on advanced data intelligence and AI-driven automation for enhanced decision making and streamlined workflows.',
-      tags: ['React', 'Python', 'Machine Learning', 'API'],
-      codeLink: 'https://github.com/arunkg005/Saige',
-    },
-    {
-      title: 'Churn Prediction',
-      type: 'Machine Learning',
-      image: 'assets/Chrun prediction.png',
-      desc: 'Telecom Customer Churn Prediction System featuring a machine learning-powered Flask API and an independent dashboard interface. Employs Logistic Regression and Scikit-learn for customer behavior analytics.',
-      tags: ['Flask', 'Python', 'Scikit-Learn', 'Docker', 'Vercel'],
-      liveLink: 'https://churn-prediction-lwz4ics58-akgindian55-6827s-projects.vercel.app/',
-      codeLink: 'https://github.com/arunkg005/churn-prediction-api',
-    },
-    {
-      title: 'Digit Recognition',
-      type: 'Deep Learning',
-      image: 'assets/digit_recognition.png',
-      desc: 'A deep learning web application powered by a custom neural network. Features a FastAPI backend serving a browser canvas drawing board for real-time handwritten digit recognition and telemetry visualization.',
-      tags: ['FastAPI', 'TensorFlow', 'Python', 'HTML Canvas', 'JavaScript'],
-      liveLink: 'https://huggingface.co/spaces/Arun-Acc001/Handwritten_Digit_Recognition',
-      codeLink: 'https://github.com/arunkg005/Handwriiten-Digit-Recongnition',
-    },
-    {
-      title: 'SysPulse',
-      type: 'Android App',
-      image: 'assets/syspulse_logo.jpg',
-      imageBg: '#ffffff',
-      imagePadding: '20px',
-      desc: 'Android application using Java and Android Studio to monitor CPU usage, memory statistics, sensors, and system health diagnostics. Features an interactive dashboard for hardware telemetry visualization.',
-      tags: ['Android SDK', 'Java', 'XML', 'Android Studio'],
-      liveLink: 'https://github.com/arunkg005/Syspulse/releases/tag/v1.0.0',
-      liveLabel: 'Get APK',
-      liveIcon: 'download',
-      codeLink: 'https://github.com/arunkg005/Syspulse',
-    },
-  ];
+  const projects = portfolioData.projects;
 
   const updateTrackFill = () => {
     const track = trackRef.current;
