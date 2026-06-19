@@ -1,56 +1,61 @@
-# Arun Kumar Gupta — Software Developer & ML Enthusiast Portfolio
+# Arun Kumar Gupta — Software Developer & ML Enthusiast
 
-A premium, fully responsive, component-driven portfolio website built with **React**, **Vite**, and **Tailwind CSS v4** featuring a modern dark-mode neumorphic & glassmorphic design.
+👋 Hello! I am **Arun Kumar Gupta**, a passionate Software Developer and Machine Learning Enthusiast currently pursuing my **B.Tech in Computer Science & Engineering** at Maharishi Markandeshwar University, Ambala (2023 - 2027). 
 
-This repository is configured to automatically build and deploy to **GitHub Pages** using a custom **GitHub Actions** workflow.
+I specialize in building intelligent backend applications, automation, and data-driven systems. My technical interests span artificial intelligence, machine learning, web APIs, and responsive front-end design. 
 
----
-
-## ✨ Features
-
-- **Premium Dark Neumorphic Aesthetic**: Vibrant, curated color palette with custom HSL-tailored colors and smooth neumorphic depth.
-- **Component-Driven Modular Architecture**: Clean, reusable React components split into separate files for easy maintenance.
-- **Dynamic Projects Section**: Grab-to-scroll horizontal carousel of software engineering and machine learning projects with tech tags, responsive controls, and active progress bar indicators.
-- **Dynamic Certificate Canvas Previews**: Dedicated certificates gallery that dynamically renders the first page of PDF certificates onto HTML `<canvas>` elements using `pdf.js` for lightweight page load speeds.
-- **Responsive Layout**: Fluid CSS Grid and Flexbox layouts using Tailwind v4 that perfectly adapt to desktop, tablet, and mobile displays.
-- **Active Navigation Highlighting**: Smooth-scrolling sections that dynamically highlight the active link in the navigation bar using the Intersection Observer API.
-- **Interactive Contact Form**: A client-side validated contact form with dynamic error messages and sending/success feedback states.
-- **Automated Deployment**: GitHub Actions workflow that builds and deploys the build output to GitHub Pages on every push.
+### 🛠️ Core Toolkit
+- **Languages**: Python, Java, SQL, JavaScript (ES6+)
+- **Frameworks & AI/ML**: Django, Flask, FastAPI, Scikit-Learn, TensorFlow, Gemini AI, NLP
+- **Tools & Platforms**: Docker, PostgreSQL, AWS, Git, GitHub, Render, Android Studio
+- **Hobbies**: Singing, Chess, Badminton, competitive Hackathons, and Quizzes
 
 ---
 
-## 📁 Repository Structure
+## 💻 About This Project
 
-The project directory structure is highly organized:
+This repository hosts my **Personal Portfolio Website**—a premium, component-driven web application featuring a modern **dark-mode neumorphic and glassmorphic aesthetic**. 
+
+The project was recently migrated from a monolithic, single-file HTML configuration to a modern, modular **React + Vite + Tailwind CSS v4** framework. This transition enables:
+* **Modularity**: Components are separated into focused files, reducing complexity and easing maintenance.
+* **Component-Driven State**: Dynamic interactions like the project slider, modal certificates, client-side contact validation, and dark/light mode toggles are managed through reactive states.
+* **Asset Optimization**: High-weight documents like certificate PDFs are dynamically parsed and drawn onto thumbnail canvas elements using `pdf.js` to ensure extremely fast page loading speeds.
+* **Automated CI/CD**: A built-in GitHub Actions pipeline compiles and deploys updates to GitHub Pages on every branch push.
+
+---
+
+## 📁 GitHub Folder Structure
+
+Here is the modular folder structure of the repository:
 
 ```text
 portfolio/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml          # GitHub Actions deploy pipeline
-├── public/                     # Static files served directly at root
-│   ├── assets/                 # Profile images, project thumbnails, PDF transcripts
-│   ├── favicon.svg             # Webpage tab icon
-│   └── icons.svg               # Inline SVG shapes
-├── src/                        # React source code
-│   ├── components/             # Reusable components
-│   │   ├── Navbar.jsx          # Desktop & Mobile Header navigation with theme toggle
-│   │   ├── Hero.jsx            # Hexagon avatar clipping layout and greeting
-│   │   ├── Education.jsx       # Academic schooling & B.Tech CSE details
-│   │   ├── Skills.jsx          # Skills pills categorized by topics
-│   │   ├── Projects.jsx        # Drag-to-scroll projects carousel
-│   │   ├── Experience.jsx      # Timelines for professional internships
+│       └── deploy.yml          # GitHub Actions deployment workflow
+├── public/                     # Static assets served at root
+│   ├── assets/                 # Custom PDFs (resume, results, certificates), images, logos
+│   ├── favicon.svg             # Webpage browser tab icon
+│   └── icons.svg               # SVG icons sheet
+├── src/                        # React source directory
+│   ├── components/             # Reusable modular components
+│   │   ├── Navbar.jsx          # Sticky nav menu, section highlighting, and theme toggle
+│   │   ├── Hero.jsx            # Hexagon avatar clipping structure & personal greeting
+│   │   ├── Education.jsx       # Academic schooling & B.Tech details
+│   │   ├── Skills.jsx          # Technical & interpersonal skills pills
+│   │   ├── Projects.jsx        # Mouse drag-to-scroll projects carousel
+│   │   ├── Experience.jsx      # Work timeline & internship achievements
 │   │   ├── Certificates.jsx    # Certificate carousel with pdf.js rendering
 │   │   ├── Activities.jsx      # Extracurricular hobbies grid
-│   │   ├── Contact.jsx         # Contact form with input fields and validation
+│   │   ├── Contact.jsx         # Contact card with validated feedback form & socials
 │   │   └── Footer.jsx          # Footer with copyright notice
-│   ├── App.jsx                 # Theme manager, scroll tracker, layout wrapper
-│   ├── index.css               # Tailwind imports, neumorphic style utility classes
-│   └── main.jsx                # React mount entrypoint
-├── eslint.config.js            # Linter rules configuration
-├── package.json                # Project dependencies and run scripts
-├── vite.config.js              # Vite compiler configuration
-└── README.md                   # Project documentation
+│   ├── App.jsx                 # Global wrapper (observer triggers, state-based dark/light theme)
+│   ├── index.css               # Tailwind directives & custom neumorphic layout classes
+│   └── main.jsx                # React DOM render entry point
+├── eslint.config.js            # Code syntax linting rules
+├── package.json                # Dependencies and run scripts
+├── vite.config.js              # Vite server & build configurations
+└── README.md                   # Project documentation & biography
 ```
 
 ---
@@ -58,38 +63,37 @@ portfolio/
 ## 🛠️ Local Development
 
 ### 1. Prerequisites
-Ensure you have [Node.js](https://nodejs.org/) installed (v18 or higher recommended).
+Make sure you have [Node.js](https://nodejs.org/) installed (version 18 or above).
 
-### 2. Installation
+### 2. Setup
 Clone the repository and install dependencies:
 ```bash
 npm install
 ```
 
-### 3. Start Development Server
-Run the local Vite development server with Hot Module Replacement (HMR):
+### 3. Run Development Server
+Run the local dev server with hot reload:
 ```bash
 npm run dev
 ```
 Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ### 4. Build for Production
-To bundle the assets into static HTML/CSS/JS files inside the `/dist` folder:
+To bundle and optimize the project files into the static `/dist` output directory:
 ```bash
 npm run build
 ```
 
 ---
 
-## 🚀 GitHub Pages Deployment
+## 🚀 Automated Deployment to GitHub Pages
 
-Deployment is fully automated using GitHub Actions defined in [deploy.yml](.github/workflows/deploy.yml).
+This project is configured with a GitHub Actions workflow to automate deployment to GitHub Pages.
 
-### Setup Instructions
-1. Commit and push all code changes to the `main` branch.
-2. Open your repository page on GitHub.
-3. Click on **Settings** -> **Pages** in the left sidebar menu.
+1. Commit and push all your changes to the `main` branch.
+2. Go to your repository on GitHub.
+3. Navigate to **Settings** -> **Pages** in the left menu.
 4. Under **Build and deployment**, look for **Source**.
-5. Switch the dropdown from **Deploy from a branch** to **GitHub Actions**.
+5. Change the selection from **Deploy from a branch** to **GitHub Actions**.
 
-The automated GitHub Action workflow will build the project and publish it live on your default GitHub Pages URL (e.g., `https://arunkg005.github.io/Portfolio/`).
+The action will build your Vite React app and publish it live on your default GitHub Pages URL (e.g., `https://arunkg005.github.io/Portfolio/`).
